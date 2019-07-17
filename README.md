@@ -2,6 +2,15 @@
 
 > A Cross-platform soundcloud client
 
+## Platforms
+
+Jukebox supports
+
+* Linux 
+* Mac
+* Windows
+
+
 #### Build Setup
 
 ``` bash
