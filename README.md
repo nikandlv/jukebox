@@ -1,3 +1,5 @@
+![Jukebox](/static/icon.ico)
+
 # jukebox
 
 > A Cross-platform soundcloud client
