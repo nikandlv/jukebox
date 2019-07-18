@@ -10,6 +10,6 @@
   }
 </script>
 
-<style>
-  /* CSS */
+<style lang="sass">
+@import "../../node_modules/normalize-scss/sass/normalize.scss"
 </style>
