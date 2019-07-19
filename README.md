@@ -4,6 +4,8 @@
 
 > A Cross-platform soundcloud client
 
+##### We use scrum to manage our tasks you can find it here <a href="https://trello.com/b/dZ8TPlba/jukebox" target="_blank">Trello</a>
+
 ## Platforms
 
 Jukebox supports
