@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app" class="root">
     <DockableSidebar />
-    <router-view></router-view>
-    <PlayerBar />
+    <div class="page-wrapper">
+      <router-view></router-view>
+      <PlayerBar />
+    </div>
   </div>
 </template>
 
@@ -17,4 +19,9 @@ export default {
 
 <style lang="sass">
 @import "../../node_modules/normalize-scss/sass/normalize.scss"
+.root,.page-wrapper
+  display: flex
+.page-wrapper
+  flex-direction: column
+  flex-grow: 1
 </style>
