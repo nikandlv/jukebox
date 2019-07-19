@@ -10,6 +10,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="sass">
+section
+    width: 100%
+    max-width: 250px
 </style>

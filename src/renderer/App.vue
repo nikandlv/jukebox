@@ -2,8 +2,8 @@
   <div id="app" class="root">
     <DockableSidebar />
     <div class="page-wrapper">
-      <router-view></router-view>
-      <PlayerBar />
+      <router-view class="page"></router-view>
+      <PlayerBar class="player-bar" />
     </div>
   </div>
 </template>
@@ -18,10 +18,17 @@ export default {
 </script>
 
 <style lang="sass">
-@import "../../node_modules/normalize-scss/sass/normalize.scss"
+@import 'normalize-scss';
+@include normalize();
 .root,.page-wrapper
   display: flex
 .page-wrapper
   flex-direction: column
   flex-grow: 1
+  height: 100vh
+  box-sizing: border-box
+  max-height: 100vh
+  .page
+    flex-grow: 1
+    overflow: auto
 </style>

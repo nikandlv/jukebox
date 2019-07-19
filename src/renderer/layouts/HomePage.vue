@@ -1,7 +1,7 @@
 <template>
     <section>
       <ActionBar />
-      HomePage
+      <p>home</p>
     </section>
 </template>
 

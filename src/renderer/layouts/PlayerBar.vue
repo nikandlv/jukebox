@@ -10,6 +10,7 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="sass" scoped>
+section
+    height: 3rem
 </style>
