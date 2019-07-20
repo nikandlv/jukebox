@@ -56,6 +56,7 @@ section
     background-color: #fcfcfc
     display: flex
     flex-direction: column
+    overflow: auto 
     .grow
         flex-grow: 1
 </style>
