@@ -15,4 +15,5 @@ section
     width: 100%
     max-width: 250px
     padding: 2rem 3rem
+    box-sizing: border-box
 </style>
