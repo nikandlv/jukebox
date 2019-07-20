@@ -16,6 +16,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-legend
-    text-transform: uppercase
+div
+    margin-top: 64px
+    legend
+        color: lighten(gray,20)
+        text-transform: uppercase
+    ul
+        padding: unset
+    
 </style>

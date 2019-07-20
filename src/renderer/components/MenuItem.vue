@@ -1,10 +1,10 @@
 <template>
-    <router-link tag="li" :to="to">
-        <a>
+    <router-link tag="li" :to="to" class="menu-item" :class="{'fade' : faded}">
         <span>
             <slot name="icon"></slot>
         </span>
-        <slot>Nothing to show</slot>
+        <a>
+            <slot>Nothing to show</slot>
         </a>
     </router-link>
 </template>
@@ -12,10 +12,25 @@
 <script>
 export default {
   name: 'MenuItem',
-  props: ['to']
+  props: ['to', 'faded']
 }
 </script>
 
-<style>
-
+<style lang="sass">
+li.menu-item
+    display: flex
+    align-items: center
+    margin: 1rem 0
+    &.fade
+        a
+            color: lighten(gray,20)
+    a
+        text-decoration: none
+        color: black
+        font-size: 1rem
+    span
+        svg
+            padding-right: 10px
+            width: 22px
+            height: auto
 </style>
