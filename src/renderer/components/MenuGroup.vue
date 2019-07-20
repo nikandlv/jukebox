@@ -1,6 +1,11 @@
 <template>
     <div>
-        MenuGroup
+        <legend>
+            <slot name="title"></slot>
+        </legend>
+        <ul>
+            <slot></slot>
+        </ul>
     </div>
 </template>
 
@@ -10,6 +15,7 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="sass" scoped>
+legend
+    text-transform: uppercase
 </style>

@@ -1,12 +1,25 @@
 <template>
     <section>
         Sidebar
+
+        <MenuGroup>
+            <template v-slot:title>Test</template>
+            <MenuItem to="/">
+                Home
+            </MenuItem>
+            <MenuItem to="/art">
+                Artists
+            </MenuItem>            
+        </MenuGroup>
     </section>    
 </template>
 
 <script>
+import MenuGroup from '../components/MenuGroup'
+import MenuItem from '../components/MenuItem'
 export default {
-  name: 'DockableSidebar'
+  name: 'DockableSidebar',
+  components: { MenuGroup, MenuItem }
 }
 </script>
 
