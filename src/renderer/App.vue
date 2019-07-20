@@ -11,6 +11,7 @@
 <script>
 import DockableSidebar from './layouts/DockableSidebar'
 import PlayerBar from './layouts/PlayerBar'
+import 'typeface-lato'
 export default {
   name: 'jukebox',
   components: { DockableSidebar, PlayerBar }
@@ -23,6 +24,8 @@ export default {
 
 .root,.page-wrapper
   display: flex
+  font-family: 'Lato', sans-serif
+  max-height: 100vh
 
 .page-wrapper
   flex-direction: column
