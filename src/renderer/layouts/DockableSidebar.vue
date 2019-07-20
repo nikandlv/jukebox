@@ -14,4 +14,5 @@ export default {
 section
     width: 100%
     max-width: 250px
+    padding: 2rem 3rem
 </style>

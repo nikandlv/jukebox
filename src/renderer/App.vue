@@ -13,21 +13,24 @@ import DockableSidebar from './layouts/DockableSidebar'
 import PlayerBar from './layouts/PlayerBar'
 export default {
   name: 'jukebox',
-  components: {DockableSidebar, PlayerBar}
+  components: { DockableSidebar, PlayerBar }
 }
 </script>
 
 <style lang="sass">
-@import 'normalize-scss';
-@include normalize();
+@import 'normalize-scss'
+@include normalize()
+
 .root,.page-wrapper
   display: flex
+
 .page-wrapper
   flex-direction: column
   flex-grow: 1
   height: 100vh
   box-sizing: border-box
   max-height: 100vh
+
   .page
     flex-grow: 1
     overflow: auto
