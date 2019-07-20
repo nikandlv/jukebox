@@ -31,6 +31,7 @@ $lato-font-path: '/node_modules/lato-font/fonts'
   display: flex
   @include lato-font('normal')
   max-height: 100vh
+  user-select: none
 
 .page-wrapper
   flex-direction: column

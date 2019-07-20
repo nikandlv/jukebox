@@ -3,9 +3,9 @@
         <span>
             <slot name="icon"></slot>
         </span>
-        <a>
+        <span>
             <slot>Nothing to show</slot>
-        </a>
+        </span>
     </router-link>
 </template>
 
@@ -20,9 +20,16 @@ export default {
 li.menu-item
     display: flex
     align-items: center
-    margin: 1rem 0
+    padding: 0.5rem
+    border-radius: 100px
+    cursor: pointer
+    transition: background-color 300ms
+
+    &:hover
+        background-color: rgba(0,0,0,0.05)
     &.fade
-        a
+        a  
+            outline: unset
             color: lighten(gray,20)
     a
         text-decoration: none

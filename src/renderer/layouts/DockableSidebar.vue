@@ -100,7 +100,7 @@ section
     width: 100%
     max-width: 250px
     min-height: 100vh
-    padding: 2rem 3rem
+    padding: 2rem 2rem
     box-sizing: border-box
     background-color: #fcfcfc
     display: flex
