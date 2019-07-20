@@ -22,7 +22,8 @@ li.menu-item
     align-items: center
     margin: 1rem 0
     &.fade
-        a
+        a  
+            outline: unset
             color: lighten(gray,20)
     a
         text-decoration: none
