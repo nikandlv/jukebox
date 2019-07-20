@@ -11,7 +11,7 @@
 <script>
 import DockableSidebar from './layouts/DockableSidebar'
 import PlayerBar from './layouts/PlayerBar'
-import 'typeface-lato'
+
 export default {
   name: 'jukebox',
   components: { DockableSidebar, PlayerBar }
@@ -20,11 +20,16 @@ export default {
 
 <style lang="sass">
 @import 'normalize-scss'
+@import 'lato-font/scss/_public-api.scss'
 @include normalize()
+ 
+$lato-font-path: '/node_modules/lato-font/fonts'
+ 
+@include lato-include-font('normal')
 
 .root,.page-wrapper
   display: flex
-  font-family: 'Lato', sans-serif
+  @include lato-font('normal')
   max-height: 100vh
 
 .page-wrapper

@@ -17,7 +17,7 @@ export default {
 
 <style lang="sass" scoped>
 div
-    margin-top: 64px
+    margin-top: 12px
     legend
         color: lighten(gray,20)
         text-transform: uppercase
