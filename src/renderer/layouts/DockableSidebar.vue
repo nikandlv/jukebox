@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="handle">
-            <div class="icon">
+            <div @click="toggleMenuStatus" class="icon">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
                     <g>
                     <g id="Menu_1_">
@@ -16,7 +16,7 @@
             </div>
             <Logo :nopadding="true"/>
         </section>
-        <section class="sidebar">
+        <section class="sidebar" :class="{'open': menuStatus === true}">
             <Logo class="logo" />
             <MenuGroup>
                 <template v-slot:title>Menu</template>
@@ -105,12 +105,18 @@ import MenuGroup from '../components/MenuGroup'
 import MenuItem from '../components/MenuItem'
 import projectPackage from '~/package.json'
 import Logo from '../components/Logo'
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'DockableSidebar',
   components: { MenuGroup, MenuItem, Logo },
   data: () => {
     return { version: projectPackage.version }
-  }
+  },
+  methods: {
+    ...mapActions(['toggleMenuStatus'])
+  },
+  computed: mapGetters(['menuStatus'])
 }
 </script>
 
