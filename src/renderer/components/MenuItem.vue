@@ -24,13 +24,14 @@ li.menu-item
     border-radius: 100px
     cursor: pointer
     transition: background-color 300ms
-
+    font-size: 0.9rem
+    color: lighten(black,30)
     &:hover
         background-color: rgba(0,0,0,0.05)
     &.fade
-        a  
+        span 
             outline: unset
-            color: lighten(gray,20)
+            color: lighten(gray,20) 
     a
         text-decoration: none
         color: black

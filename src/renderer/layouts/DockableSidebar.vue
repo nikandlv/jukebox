@@ -1,5 +1,6 @@
 <template>
     <section>
+        <Logo />
         <MenuGroup>
             <template v-slot:title>Menu</template>
             <MenuItem to="/artists">
@@ -85,10 +86,10 @@
 import MenuGroup from '../components/MenuGroup'
 import MenuItem from '../components/MenuItem'
 import projectPackage from '~/package.json'
-
+import Logo from '../components/Logo'
 export default {
   name: 'DockableSidebar',
-  components: { MenuGroup, MenuItem },
+  components: { MenuGroup, MenuItem, Logo },
   data: () => {
     return { version: projectPackage.version }
   }
@@ -100,7 +101,7 @@ section
     width: 100%
     max-width: 250px
     min-height: 100vh
-    padding: 2rem 2rem
+    padding: 2rem 2rem 0rem 2rem
     box-sizing: border-box
     background-color: #fcfcfc
     display: flex
