@@ -28,9 +28,9 @@ li.menu-item
     &:hover
         background-color: rgba(0,0,0,0.05)
     &.fade
-        a  
+        span 
             outline: unset
-            color: lighten(gray,20)
+            color: lighten(gray,20) 
     a
         text-decoration: none
         color: black
