@@ -23,5 +23,4 @@ div
         text-transform: uppercase
     ul
         padding: unset
-    
 </style>
