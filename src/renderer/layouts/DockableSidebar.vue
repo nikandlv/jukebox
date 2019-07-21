@@ -151,12 +151,13 @@ section.sidebar
     width: 250px
     max-width: 250px
     min-height: 100vh
+    max-height: 100vh
     padding: 2rem 2rem 0rem 2rem
     box-sizing: border-box
     background-color: #fcfcfc
     display: flex
     flex-direction: column
-    overflow: auto 
+    overflow-y: auto
     transition: width 300ms,transform 300ms,padding 500ms
     .icon
         width: 18px
@@ -168,13 +169,13 @@ section.sidebar
 @media(max-width: 1000px)
     section.sidebar
         width: 200px
-        overflow: auto
+        overflow-y: auto
         padding: 1rem 1rem 0rem 1rem
 @media(max-width: 800px)
     section.sidebar
         transform: translateX(-100%)
         width: 0
-        overflow: hidden
+        overflow-y: hidden
         padding: 2rem 0rem 0rem 0rem
     section.handle
         transform: translateY(0%)
