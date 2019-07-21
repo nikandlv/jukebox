@@ -25,6 +25,7 @@ li.menu-item
     cursor: pointer
     transition: background-color 300ms
     font-size: 0.9rem
+    color: lighten(black,30)
     &:hover
         background-color: rgba(0,0,0,0.05)
     &.fade
