@@ -98,7 +98,7 @@ export default {
 
 <style scoped lang="sass">
 section
-    width: 100%
+    width: 250px
     max-width: 250px
     min-height: 100vh
     padding: 2rem 2rem 0rem 2rem
@@ -107,6 +107,7 @@ section
     display: flex
     flex-direction: column
     overflow: auto 
+    transition: width 300ms,transform 300ms,padding 500ms
     .icon
         width: 18px
         height: auto
@@ -114,4 +115,15 @@ section
             fill: lighten(gray,20)
     .grow
         flex-grow: 1
+@media(max-width: 1000px)
+    section
+        width: 200px
+        overflow: auto
+        padding: 1rem 1rem 0rem 1rem
+@media(max-width: 800px)
+    section
+        transform: translateX(-100%)
+        width: 0
+        overflow: hidden
+        padding: 2rem 0rem 0rem 0rem
 </style>
