@@ -43,4 +43,8 @@ $lato-font-path: '/node_modules/lato-font/fonts'
   .page
     flex-grow: 1
     overflow: auto
+    transition: padding-top 300ms
+@media(max-width: 800px)
+  .page
+    padding-top: 64px
 </style>
