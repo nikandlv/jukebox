@@ -1,5 +1,5 @@
 <template>
-    <span>
+    <span :class="{'nopadding' : nopadding === true}">
         <img src="/static/logo-2.svg" alt="Jukebox">
         Jukebox.
     </span>
@@ -7,7 +7,8 @@
 
 <script>
 export default {
-  name: 'Logo'
+  name: 'Logo',
+  props: ['nopadding']
 }
 </script>
 
@@ -16,6 +17,9 @@ span
     margin-bottom: 12px
     font-size: 1.5rem
     color: lighten(black,40)
+    &.nopadding
+        margin-bottom: 0px
+
 img
     width: 24px
     height: auto
