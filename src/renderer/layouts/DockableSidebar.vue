@@ -77,7 +77,7 @@
                 </MenuItem>
             </MenuGroup>
 
-            <Button type="outlined">
+            <Button type="contained">
                 <svg version="1.1" id="btn__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 286.376 286.376" style="enable-background:new 0 0 286.376 286.376;" xml:space="preserve">
                     <g id="Add">
                         <path style="fill-rule:evenodd;clip-rule:evenodd;" d="M268.477,125.29H161.086V17.899c0-9.885-8.013-17.898-17.898-17.898
