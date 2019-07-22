@@ -27,7 +27,6 @@ export default {
   border-radius: .375rem
   transition: background-color 200ms
   box-sizing: border-box
-  overflow: hidden
   outline: unset
   &--contained 
     background-color: #336cfb

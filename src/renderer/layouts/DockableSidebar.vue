@@ -16,8 +16,24 @@
             </div>
             <Logo :nopadding="true"/>
         </section>
+        <section class="overlay" :class="{'open': menuStatus === true}"  @click="toggleMenuStatus" />
         <section class="sidebar" :class="{'open': menuStatus === true}">
-            <Logo class="logo" />
+            <div class="logo-wrapper">
+                <div @click="toggleMenuStatus" class="icon">
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
+                        <g>
+                        <g id="Menu_1_">
+                            <path d="M12.03,120.303h360.909c6.641,0,12.03-5.39,12.03-12.03c0-6.641-5.39-12.03-12.03-12.03H12.03
+                                c-6.641,0-12.03,5.39-12.03,12.03C0,114.913,5.39,120.303,12.03,120.303z"/>
+                            <path d="M372.939,180.455H12.03c-6.641,0-12.03,5.39-12.03,12.03s5.39,12.03,12.03,12.03h360.909c6.641,0,12.03-5.39,12.03-12.03
+                                S379.58,180.455,372.939,180.455z"/>
+                            <path d="M372.939,264.667H132.333c-6.641,0-12.03,5.39-12.03,12.03c0,6.641,5.39,12.03,12.03,12.03h240.606
+                                c6.641,0,12.03-5.39,12.03-12.03C384.97,270.056,379.58,264.667,372.939,264.667z"/>	
+                        </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+                    </svg>
+                </div>
+                <Logo class="logo" />
+            </div>
             <MenuGroup>
                 <template v-slot:title>Menu</template>
                 <MenuItem to="/artists">
@@ -164,6 +180,19 @@ section.handle
         svg
             width: 24px
             height: 24px
+section.overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0,0,0,0)
+    z-index: 1100
+    transition: background-color 200ms
+    pointer-events: none
+    &.open
+        pointer-events: all
+        background-color: rgba(0,0,0,0.1)
 section.sidebar
     width: 250px
     max-width: 250px
@@ -176,6 +205,16 @@ section.sidebar
     flex-direction: column
     overflow-y: auto
     transition: width 300ms,transform 300ms,padding 500ms
+    .logo-wrapper
+        min-height: 48px
+        .icon
+            display: none
+    &.open
+        transform: translateX(0%)
+        padding: 1rem 1rem 0rem 1rem
+        width: 300px
+        overflow-y: auto
+        
     .playlist-button
         align-self: flex-start
     .icon
@@ -193,9 +232,28 @@ section.sidebar
 @media(max-width: 800px)
     section.sidebar
         transform: translateX(-100%)
-        width: 0
         overflow-y: hidden
-        padding: 2rem 0rem 0rem 0rem
+        z-index: 1200
+        position: absolute
+        left: 0
+        top: 0
+        .logo-wrapper
+            display: flex
+            .icon
+                display: block
+                width: 24px
+                height: 24px
+                padding: 0.8rem
+                cursor: pointer
+                transition: background-color 200ms
+                border-radius: 100%
+                &:hover
+                    background-color: rgba(black,0.05)
+                svg
+                    width: 24px
+                    height: 24px
+        .logo
+            display: none
     section.handle
         transform: translateY(0%)
 </style>
