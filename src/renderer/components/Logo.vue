@@ -1,7 +1,7 @@
 <template>
     <span :class="{'nopadding' : nopadding === true}">
         <img src="/static/logo-2.svg" alt="Jukebox">
-        Jukebox.
+        Jukebox
     </span>
 </template>
 

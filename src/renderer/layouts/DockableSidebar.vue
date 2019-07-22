@@ -61,7 +61,7 @@
                     My Favorites
                 </MenuItem>
             </MenuGroup>
-            <MenuGroup class="grow">
+            <MenuGroup>
                 <template v-slot:title>Your playlists</template>
                 <MenuItem to="/">
                     Hits of this summer
@@ -75,7 +75,21 @@
                 <MenuItem to="/">
                     Workout
                 </MenuItem>
-            </MenuGroup >
+            </MenuGroup>
+
+            <Button type="contained">
+                <svg version="1.1" id="btn__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 286.376 286.376" style="enable-background:new 0 0 286.376 286.376;" xml:space="preserve">
+                    <g id="Add">
+                        <path style="fill-rule:evenodd;clip-rule:evenodd;" d="M268.477,125.29H161.086V17.899c0-9.885-8.013-17.898-17.898-17.898
+                            s-17.898,8.013-17.898,17.898v107.39H17.9c-9.885,0-17.9,8.013-17.9,17.898c0,9.885,8.015,17.898,17.9,17.898h107.39v107.39
+                            c0,9.885,8.013,17.898,17.898,17.898s17.898-8.013,17.898-17.898v-107.39h107.391c9.885,0,17.898-8.014,17.898-17.898
+                            C286.376,133.303,278.362,125.29,268.477,125.29z"/>
+                    </g>
+                </svg>
+                Add new list
+            </Button>
+            <div class="grow"></div>
+
             <MenuGroup>
                 <MenuItem to="/" :faded="true">
                     <template v-slot:icon>
@@ -106,10 +120,11 @@ import MenuItem from '../components/MenuItem'
 import projectPackage from '~/package.json'
 import Logo from '../components/Logo'
 import { mapActions, mapGetters } from 'vuex'
+import Button from '../components/Button'
 
 export default {
   name: 'DockableSidebar',
-  components: { MenuGroup, MenuItem, Logo },
+  components: { MenuGroup, MenuItem, Logo, Button },
   data: () => {
     return { version: projectPackage.version }
   },
