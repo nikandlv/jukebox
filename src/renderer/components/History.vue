@@ -24,7 +24,7 @@ export default {
     margin-left: 1.5rem
     cursor: pointer
   &__icon
-    width: 2rem
-    height: 2rem
+    width: 1.5rem
+    height: 1.5rem
 </style>
 
