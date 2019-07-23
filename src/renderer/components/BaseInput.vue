@@ -1,6 +1,6 @@
 <template>
   <div>
-      <input type="search" v-bind="query" :placeholder="placeholder">
+      <input :type="type" :placeholder="placeholder">
       <slot></slot>
   </div>
 </template>
@@ -8,12 +8,7 @@
 <script>
 export default {
   name: 'BaseInput',
-  data () {
-    return {
-      query: null
-    }
-  },
-  props: ['placeholder']
+  props: ['placeholder', 'type']
 }
 </script>
 
@@ -21,29 +16,30 @@ export default {
 <style lang="sass" scoped>
   div
     display: flex
-    justify-content: center
-    width: 40%
-  
+    align-items: center
+    border: 1px solid lighten(grey, 40)
+    background-color: #f9f9f9
+    border-radius: 100px
+    padding: .4rem 1.5rem .4rem 0rem
+    transition: width 200ms
     input
-      width: 90%
       height: 100%
-      border-radius: 15px
-      padding: .4rem 1.5rem
       color: lighten(black, 30) 
-      border: 1px solid lighten(grey, 40)
-      margin-right: -2rem
-      background-color: #f9f9f9
-      transition: all .2s ease-in-out
+      padding: .2rem 0rem .2rem 1.5rem
+      min-width: unset
+      border: unset
+      background-color: unset
+      box-sizing: border-box
+      outline: none
+      flex-grow: 1
       &::placeholder
         color: #a8abb3
-        
-      &:focus
-        outline: none
-        width: 100%
 
     svg
       width: 1.2rem
       height: 1.2rem
+      min-width: 1.2rem
+      min-height: 1.2rem
       cursor: pointer
       fill: #3b3c3d
 </style>

@@ -21,12 +21,12 @@ export default {
     padding: 0
     margin-left: 1.5rem
     display: flex
-    flex-direction: row
+    align-items: center
     cursor: pointer
 
   &__image
-    width: 1.5rem
-    height: 1.5rem
+    width: 2rem
+    height: 2rem
     border-radius: 50%
 
   &__icon
