@@ -7,11 +7,15 @@
 </template>
 
 <script>
+import color from 'dominant-color'
 export default {
   name: 'MusicBox',
   methods: {
     onLoad () {
-      this.$el.getElementsByTagName('img')[0].className = 'loaded'
+      let img = this.$el.getElementsByTagName('img')[0]
+      color(img.src, {format: 'rgb'}, (_, color) => {
+        img.style['boxShadow'] = `0px 10px 60px 2px rgba(${color[0]},${color[1]},${color[2]},0.60)`
+      })
     }
   }
 }
@@ -24,6 +28,8 @@ div.music-box
         border-radius: 4px
         width: 100%
         height: auto
+        box-shadow: 0px 10px 60px -2px rgba(0,0,0,0.60)
+        transition: box-shadow 500ms
     p
         text-overflow: ellipsis
         white-space: nowrap
