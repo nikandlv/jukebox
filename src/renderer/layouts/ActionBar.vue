@@ -36,8 +36,8 @@ export default {
 <style lang="sass" scoped>
 section.action-bar
   display: flex
-  padding: 1rem 2.5rem
   align-items: center
+  padding-bottom: 1rem
   .search-wrapper
     transition: width 200ms
     transition: margin-top 100ms
