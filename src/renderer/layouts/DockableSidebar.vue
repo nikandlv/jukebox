@@ -220,7 +220,7 @@ section.sidebar
 @media(max-width: 1000px)
     section.sidebar
         width: 200px
-        overflow-y: auto
+        overflow-y: hidden
         padding: 1rem 0rem 0rem 1rem
 @media(max-width: 800px)
     section.sidebar
