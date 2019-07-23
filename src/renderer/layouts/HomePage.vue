@@ -2,7 +2,7 @@
     <section class="page">
       <ActionBar />
       <div>
-        <MusicBox />
+        <MusicBox v-for="item in top" :key="item.id" :item="item" />
       </div>
     </section>
 </template>
@@ -15,7 +15,26 @@ export default {
   components: { ActionBar, MusicBox },
   data: () => {
     return {
-      top: []
+      top: [
+        {
+          id: 0,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 1,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 2,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        }
+      ]
     }
   }
 }

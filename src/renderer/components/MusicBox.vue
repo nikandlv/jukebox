@@ -1,8 +1,8 @@
 <template>
     <div class="music-box">
-        <img @load="onLoad" src="/static/demo/artwork-5.png" alt="Artwork">
-        <p class="title">Don't Hide - single</p>
-        <p class="artist">Mike Perry & Willie Willie Willie</p>
+        <img @load="onLoad" :src="item.artwork" alt="Artwork">
+        <p class="title">{{item.title}}</p>
+        <p class="artist">{{item.artist}}</p>
     </div>
 </template>
 
@@ -10,11 +10,12 @@
 import color from 'dominant-color'
 export default {
   name: 'MusicBox',
+  props: ['item'],
   methods: {
     onLoad () {
       let img = this.$el.getElementsByTagName('img')[0]
       color(img.src, {format: 'rgb'}, (_, color) => {
-        img.style['boxShadow'] = `0px 10px 60px 2px rgba(${color[0]},${color[1]},${color[2]},0.60)`
+        img.style['boxShadow'] = `0px 10px 55px 5px rgba(${color[0]},${color[1]},${color[2]},0.60)`
       })
     }
   }
