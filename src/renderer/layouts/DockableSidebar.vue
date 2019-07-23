@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="handle">
+        <section class="handle" :class="{'open': menuStatus === true}">
             <div @click="toggleMenuStatus" class="icon">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
                     <g>
@@ -20,19 +20,6 @@
         <section >
             <vue-custom-scrollbar class="sidebar" :class="{'open': menuStatus === true}"  :settings="settings">
                 <div class="logo-wrapper">
-                    <div @click="toggleMenuStatus" class="icon">
-                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
-                            <g>
-                            <g id="Menu_1_">
-                                <path d="M12.03,120.303h360.909c6.641,0,12.03-5.39,12.03-12.03c0-6.641-5.39-12.03-12.03-12.03H12.03
-                                    c-6.641,0-12.03,5.39-12.03,12.03C0,114.913,5.39,120.303,12.03,120.303z"/>
-                                <path d="M372.939,180.455H12.03c-6.641,0-12.03,5.39-12.03,12.03s5.39,12.03,12.03,12.03h360.909c6.641,0,12.03-5.39,12.03-12.03
-                                    S379.58,180.455,372.939,180.455z"/>
-                                <path d="M372.939,264.667H132.333c-6.641,0-12.03,5.39-12.03,12.03c0,6.641,5.39,12.03,12.03,12.03h240.606
-                                    c6.641,0,12.03-5.39,12.03-12.03C384.97,270.056,379.58,264.667,372.939,264.667z"/>	
-                            </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
-                        </svg>
-                    </div>
                     <Logo class="logo" />
                 </div>
                 <MenuGroup>
@@ -164,12 +151,15 @@ section.handle
     width: 100%
     height: 64px
     box-sizing: border-box
-    transition: transform 300ms
+    transition: transform 300ms,box-shadow 200ms
     background-color: #fcfcfc
     transform: translateY(-100%)
     display: flex
     align-items: center
+    z-index: 1210
     padding: 0 1rem
+    &.open
+        box-shadow: 0px 2px 4px -1px rgba(0,0,0,0), 0px 4px 5px 0px rgba(0,0,0,0.04), 0px 1px 10px 0px rgba(0,0,0,0)
     .icon
         margin: 0 10px
         width: 24px
@@ -217,7 +207,7 @@ section.sidebar
         padding: 1rem 0rem 0rem 1rem
         width: 300px
         overflow-y: hidden
-        
+        box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0), 0px 1px 10px 0px rgba(0,0,0,0.12)
     .playlist-button
         align-self: flex-start
     .icon

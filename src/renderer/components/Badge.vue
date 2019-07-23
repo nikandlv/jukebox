@@ -24,7 +24,7 @@ export default {
     align-items: center
     border-radius: 50%
     border: 2px solid white
-    // positioning according to the the notification icon
+    // positioning according to the the icon
     position: absolute
     top: -0.2rem
     right: -.3rem
