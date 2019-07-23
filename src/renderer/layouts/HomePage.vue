@@ -1,18 +1,28 @@
 <template>
-    <section>
+    <section class="page">
       <ActionBar />
-      <p>home</p>
+      <div>
+        <MusicBox />
+      </div>
     </section>
 </template>
 
 <script>
 import ActionBar from './ActionBar'
+import MusicBox from '../components/MusicBox'
 export default {
   name: 'HomePage',
-  components: {ActionBar}
+  components: { ActionBar, MusicBox },
+  data: () => {
+    return {
+      top: []
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped lang="sass">
+section.page
+    padding: 1rem 2.5rem
 
 </style>
