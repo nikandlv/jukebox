@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "color-thief": "^2.2.5",
     "normalize-scss": "^7.0.1",
     "vue": "^2.5.16",
     "vue-custom-scrollbar": "^1.1.0",

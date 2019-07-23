@@ -11,7 +11,7 @@ export default {
   name: 'MusicBox',
   methods: {
     onLoad () {
-      console.log('loaded')
+      this.$el.getElementsByTagName('img')[0].className = 'loaded'
     }
   }
 }
