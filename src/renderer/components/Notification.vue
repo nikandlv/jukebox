@@ -43,5 +43,6 @@ export default {
     height: 1.5rem
     padding: 0
     fill: #bbbcbc
+
 </style>
 

@@ -35,5 +35,9 @@ div
   display: flex
   padding: 1rem 2.5rem
   align-items: center
+
+@media(max-width: 1000px)    
+  div
+    flex-wrap: wrap
 </style>
 
