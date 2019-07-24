@@ -15,7 +15,7 @@ export default {
     onLoad () {
       let img = this.$el.getElementsByTagName('img')[0]
       color(img.src, {format: 'rgb'}, (_, color) => {
-        img.style['boxShadow'] = `0px 10px 55px 5px rgba(${color[0]},${color[1]},${color[2]},0.60)`
+        img.style['boxShadow'] = `0px 5px 55px 5px rgba(${color[0]},${color[1]},${color[2]},0.60),0px 10px 40px 4px rgba(${color[0]},${color[1]},${color[2]},0.40)`
       })
     }
   }
@@ -24,7 +24,7 @@ export default {
 
 <style scoped lang="sass">
 div.music-box
-    width: 150px
+    width: 140px
     img
         border-radius: 4px
         width: 100%

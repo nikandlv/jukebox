@@ -2,25 +2,20 @@
     <section>
       <ActionBar />
       <div>
-        <Carousel class="carousel-custom" :paginationEnabled="false" :scrollPerPage="false" :perPageCustom="[[300, 2], [540, 3], [740, 4], [800, 3], [900, 4],  [1000, 4], [1200, 5]]">
-          <Slide v-for="item in top" :key="item.id">
-            <MusicBox  :item="item" />
-          </Slide>
-        </Carousel>
+        <MusicRow :items='items' />
       </div>
     </section>
 </template>
 
 <script>
 import ActionBar from './ActionBar'
-import MusicBox from '../components/MusicBox'
-import { Carousel, Slide } from 'vue-carousel'
+import MusicRow from './MusicRow'
 export default {
   name: 'HomePage',
-  components: { ActionBar, MusicBox, Carousel, Slide },
+  components: { ActionBar, MusicRow },
   data: () => {
     return {
-      top: [
+      items: [
         {
           id: 0,
           title: 'Habiba',
