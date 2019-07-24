@@ -26,7 +26,7 @@ export default {
 div.music-box
     width: 140px
     img
-        border-radius: 4px
+        border-radius: 100%
         width: 100%
         height: auto
         box-shadow: 0px 10px 60px -2px rgba(0,0,0,0.60)
@@ -36,6 +36,7 @@ div.music-box
         white-space: nowrap
         overflow: hidden
         margin: 0.5rem 0
+        text-align: center
         &.title
             font-size: .9rem
         &.artist

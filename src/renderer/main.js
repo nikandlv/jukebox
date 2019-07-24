@@ -1,3 +1,4 @@
+import 'abortcontroller-polyfill/dist/polyfill-patch-fetch'
 import Vue from 'vue'
 import axios from 'axios'
 
