@@ -25,6 +25,9 @@ function createWindow () {
     width: 1000,
     minHeight:600,
     minWidth:400,
+    //frame: false,
+    //titleBarStyle: 'hidden',
+    //titleBarStyle: 'customButtonsOnHover', 
   })
 
   mainWindow.loadURL(winURL)
