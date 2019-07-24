@@ -21,6 +21,8 @@ export default {
 <style lang="sass">
 @import 'normalize-scss'
 @import 'lato-font/scss/_public-api.scss'
+$FontPath: '/node_modules/roboto-slab-fontface-kit/fonts'
+@import 'roboto-slab-fontface-kit/roboto-slab.scss'
 @include normalize()
  
 $lato-font-path: '/node_modules/lato-font/fonts'
