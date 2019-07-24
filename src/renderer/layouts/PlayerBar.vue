@@ -7,10 +7,7 @@
         </div>
         <div class="bars">
             <audio ref="visualizer" autoplay src="/static/demo/music.mp3"></audio>
-                <av-waveform
-      ref-link="visualizer"
-      :playtime-line-width="0" :canv-width="800" :canv-height="64" :playtime="false" :playtime-font-size="0" noplayed-line-color="#336cfb" playtime-line-color="#ABC123" :playtime-slider="true"
-    ></av-waveform>
+                
         </div>
     </section>
 </template>
