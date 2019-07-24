@@ -5,16 +5,32 @@
             <p class="title">Perfidia</p>
             <p class="artist">Nat King Cole</p>
         </div>
-        <div class="bars">
-            <audio ref="visualizer" autoplay src="/static/demo/music.mp3"></audio>
-                
+        <div class="visualizer">
+            <div id="visualizer"></div>
         </div>
     </section>
 </template>
 
 <script>
+import WaveSurfer from 'wavesurfer.js'
 export default {
-  name: 'PlayerBar'
+  name: 'PlayerBar',
+  mounted () {
+    const wavesurfer = WaveSurfer.create({
+      container: '#visualizer',
+      waveColor: '#c3c3c3',
+      progressColor: '#336cfb',
+      barWidth: 2,
+      barHeight: 1,
+      barGap: null,
+      autoCenter: true,
+      height: 64
+    })
+    wavesurfer.load('/static/demo/music.mp3')
+    wavesurfer.on('ready', function () {
+      // wavesurfer.play()
+    })
+  }
 }
 </script>
 
@@ -33,4 +49,7 @@ section
         margin: 8px 10px
     p.artist
         color: lighten(black,45)
+    .visualizer
+        flex-grow: 1
+        height: 64px
 </style>
