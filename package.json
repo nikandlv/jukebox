@@ -59,6 +59,7 @@
     "axios": "^0.18.0",
     "dominant-color": "0.0.1",
     "normalize-scss": "^7.0.1",
+    "roboto-slab-fontface-kit": "^1.0.2",
     "vue": "^2.5.16",
     "vue-carousel": "^0.18.0",
     "vue-custom-scrollbar": "^1.1.0",
