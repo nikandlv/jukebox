@@ -1,8 +1,12 @@
 <template>
-    <section class="page">
+    <section>
       <ActionBar />
       <div>
-        <MusicBox v-for="item in top" :key="item.id" :item="item" />
+        <Carousel class="carousel-custom" :paginationEnabled="false" :scrollPerPage="false" :perPageCustom="[[300, 2], [540, 3], [740, 4], [800, 3], [900, 4],  [1000, 4], [1200, 5]]">
+          <Slide v-for="item in top" :key="item.id">
+            <MusicBox  :item="item" />
+          </Slide>
+        </Carousel>
       </div>
     </section>
 </template>
@@ -10,9 +14,10 @@
 <script>
 import ActionBar from './ActionBar'
 import MusicBox from '../components/MusicBox'
+import { Carousel, Slide } from 'vue-carousel'
 export default {
   name: 'HomePage',
-  components: { ActionBar, MusicBox },
+  components: { ActionBar, MusicBox, Carousel, Slide },
   data: () => {
     return {
       top: [
@@ -33,6 +38,42 @@ export default {
           title: 'Tilte',
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 3,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 4,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 5,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 6,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 7,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 8,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
         }
       ]
     }
@@ -40,8 +81,10 @@ export default {
 }
 </script>
 
-<style scoped lang="sass">
+<style lang="sass">
 section.page
     padding: 1rem 2.5rem
-
+    overflow-x: hidden
+    .VueCarousel-wrapper
+        overflow: unset
 </style>
