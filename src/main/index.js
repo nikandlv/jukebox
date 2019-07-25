@@ -24,7 +24,7 @@ function createWindow () {
     useContentSize: true,
     width: 1000,
     minHeight:600,
-    minWidth:400,
+    minWidth:550,
     //frame: false,
     //titleBarStyle: 'hidden',
     //titleBarStyle: 'customButtonsOnHover', 

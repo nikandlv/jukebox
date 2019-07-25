@@ -1,7 +1,7 @@
 <template>
     <section>
         <legend>Top music of the month</legend>
-        <Carousel class="carousel-custom" :paginationEnabled="false" :scrollPerPage="false" :perPageCustom="[[300, 2], [540, 3], [740, 4], [800, 3], [900, 4],  [1000, 4], [1200, 5] , [1300, 6]]">
+        <Carousel class="carousel-custom" :paginationEnabled="false" :scrollPerPage="false" :perPageCustom="[[540, 3], [740, 4], [800, 3], [900, 4],  [1000, 4], [1200, 5] , [1300, 6]]">
           <Slide v-for="item in items" :key="item.id">
             <MusicBox  :item="item" />
           </Slide>
