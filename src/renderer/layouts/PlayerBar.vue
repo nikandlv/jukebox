@@ -1,6 +1,6 @@
 <template>
     <section class="player">
-        <img class="artwork" src="/static/demo/artwork.jpg" />
+        <img @load="onArtworkLoad" class="artwork" src="/static/demo/starboy.png" />
         <div>
             <p class="title">Perfidia</p>
             <p class="artist">Nat King Cole</p>
@@ -13,10 +13,11 @@
 
 <script>
 import WaveSurfer from 'wavesurfer.js'
+import color from 'dominant-color'
 export default {
   name: 'PlayerBar',
   mounted () {
-    const wavesurfer = WaveSurfer.create({
+    this.wavesurfer = WaveSurfer.create({
       container: '#visualizer',
       waveColor: '#c3c3c3',
       progressColor: '#336cfb',
@@ -27,10 +28,18 @@ export default {
       height: 64,
       responsive: true
     })
-    wavesurfer.load('/static/demo/music.mp3')
-    wavesurfer.on('ready', function () {
+    this.wavesurfer.load('/static/demo/music.mp3')
+    this.wavesurfer.on('ready', function () {
       // wavesurfer.play()
     })
+  },
+  methods: {
+    onArtworkLoad () {
+      let img = this.$el.getElementsByTagName('img')[0]
+      color(img.src, (_, color) => {
+        this.wavesurfer.setProgressColor(`#${color}`)
+      })
+    }
   }
 }
 </script>
