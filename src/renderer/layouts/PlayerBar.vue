@@ -1,12 +1,16 @@
 <template>
     <section class="player">
-        <img @load="onArtworkLoad" class="artwork" src="/static/demo/starboy.png" />
+        <img @load="onArtworkLoad" class="artwork" src="/static/demo/artwork.jpg" />
         <div>
-            <p class="title">Perfidia</p>
-            <p class="artist">Nat King Cole</p>
+            <p class="title">Don't Let Me Down</p>
+            <p class="artist">The Chainsmokers</p>
         </div>
         <div class="visualizer">
             <div id="visualizer"></div>
+        </div>
+        <div class="duration">
+            <p class="progress active">00:00</p>
+            <p>{{duration}}</p>
         </div>
         <div class="control-buttons">
             <div class="play-pause-button" @click="togglePlay">
@@ -20,9 +24,11 @@
 <script>
 import WaveSurfer from 'wavesurfer.js'
 import color from 'dominant-color'
+import { formatSeconds } from '../utility/DateTime'
 export default {
   name: 'PlayerBar',
   mounted () {
+    let progress = this.$el.getElementsByClassName('progress')[0]
     this.wavesurfer = WaveSurfer.create({
       container: '#visualizer',
       waveColor: '#c3c3c3',
@@ -35,10 +41,17 @@ export default {
       responsive: true
     })
     this.wavesurfer.load('/static/demo/music.mp3')
+    this.wavesurfer.on('ready', () => {
+      this.duration = formatSeconds(this.getDuration())
+    })
+    this.wavesurfer.on('audioprocess', (amount) => {
+      progress.innerHTML = formatSeconds(amount)
+    })
   },
   data () {
     return {
-      playingStatus: false
+      playingStatus: false,
+      duration: '00:00'
     }
   },
   methods: {
@@ -46,6 +59,7 @@ export default {
       let img = this.$el.getElementsByTagName('img')[0]
       color(img.src, (_, color) => {
         this.wavesurfer.setProgressColor(`#${color}`)
+        this.wavesurfer.setCursorColor(`#${color}`)
       })
     },
     play () {
@@ -70,10 +84,13 @@ export default {
       this.wavesurfer.skip(offset)
     },
     getVolume () {
-      this.wavesurfer.getVolume()
+      return this.wavesurfer.getVolume()
     },
     setVolume (volume) {
       this.wavesurfer.setVolume(volume)
+    },
+    getDuration () {
+      return this.wavesurfer.getDuration()
     },
     togglePlay () {
       this.wavesurfer.playPause()
@@ -102,4 +119,5 @@ section.player
         height: 64px
         wave
             overflow-x: hidden !important
+            cursor: e-resize
 </style>
