@@ -119,4 +119,5 @@ section.player
         height: 64px
         wave
             overflow-x: hidden !important
+            cursor: e-resize
 </style>
