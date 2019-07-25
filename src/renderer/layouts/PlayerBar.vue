@@ -59,6 +59,7 @@ export default {
       let img = this.$el.getElementsByTagName('img')[0]
       color(img.src, (_, color) => {
         this.wavesurfer.setProgressColor(`#${color}`)
+        this.wavesurfer.setCursorColor(`#${color}`)
       })
     },
     play () {
