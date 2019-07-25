@@ -1,9 +1,9 @@
 <template>
     <section class="player">
-        <img @load="onArtworkLoad" class="artwork" src="/static/demo/starboy.png" />
+        <img @load="onArtworkLoad" class="artwork" src="/static/demo/artwork.jpg" />
         <div>
-            <p class="title">Perfidia</p>
-            <p class="artist">Nat King Cole</p>
+            <p class="title">Don't Let Me Down</p>
+            <p class="artist">The Chainsmokers</p>
         </div>
         <div class="visualizer">
             <div id="visualizer"></div>
