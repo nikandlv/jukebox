@@ -40,11 +40,10 @@ section.player
     display: flex
     align-items: center
     border-top: 1px solid rgba(0,0,0,0.1)
-    height: 84px
+    height: 5rem
     img.artwork
         height: 100%
         width: auto
-        border-radius: 2px
     p.title,p.artist
         font-size: .8rem
         margin: 8px 10px
