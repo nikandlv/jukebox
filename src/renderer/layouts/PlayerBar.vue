@@ -68,7 +68,13 @@ export default {
     },
     skip (offset) {
       this.wavesurfer.skip(offset)
-    }
+    },
+    getVolume () {
+      this.wavesurfer.getVolume()
+    },
+    setVolume (volume) {
+      this.wavesurfer.setVolume(volume)
+    },
     togglePlay () {
       this.wavesurfer.playPause()
       this.playingStatus = this.isPlaying()
