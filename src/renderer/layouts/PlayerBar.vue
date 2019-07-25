@@ -8,6 +8,10 @@
         <div class="visualizer">
             <div id="visualizer"></div>
         </div>
+        <div class="duration">
+            <p class="progress active">00:00</p>
+            <p>{{duration}}</p>
+        </div>
         <div class="control-buttons">
             <div class="play-pause-button" @click="togglePlay">
                 <svg v-show="!playingStatus" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z"/></svg>
@@ -20,9 +24,11 @@
 <script>
 import WaveSurfer from 'wavesurfer.js'
 import color from 'dominant-color'
+import { formatSeconds } from '../utility/DateTime'
 export default {
   name: 'PlayerBar',
   mounted () {
+    let progress = this.$el.getElementsByClassName('progress')[0]
     this.wavesurfer = WaveSurfer.create({
       container: '#visualizer',
       waveColor: '#c3c3c3',
@@ -35,10 +41,17 @@ export default {
       responsive: true
     })
     this.wavesurfer.load('/static/demo/music.mp3')
+    this.wavesurfer.on('ready', () => {
+      this.duration = formatSeconds(this.getDuration())
+    })
+    this.wavesurfer.on('audioprocess', (amount) => {
+      progress.innerHTML = formatSeconds(amount)
+    })
   },
   data () {
     return {
-      playingStatus: false
+      playingStatus: false,
+      duration: '00:00'
     }
   },
   methods: {
@@ -70,10 +83,13 @@ export default {
       this.wavesurfer.skip(offset)
     },
     getVolume () {
-      this.wavesurfer.getVolume()
+      return this.wavesurfer.getVolume()
     },
     setVolume (volume) {
       this.wavesurfer.setVolume(volume)
+    },
+    getDuration () {
+      return this.wavesurfer.getDuration()
     },
     togglePlay () {
       this.wavesurfer.playPause()
