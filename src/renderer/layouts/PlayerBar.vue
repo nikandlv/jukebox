@@ -66,6 +66,9 @@ export default {
     isPlaying () {
       return typeof this.wavesurfer === 'undefined' ? false : this.wavesurfer.isPlaying()
     },
+    skip (offset) {
+      this.wavesurfer.skip(offset)
+    }
     togglePlay () {
       this.wavesurfer.playPause()
       this.playingStatus = this.isPlaying()
