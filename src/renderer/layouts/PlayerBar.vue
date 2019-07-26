@@ -33,6 +33,7 @@ export default {
       container: '#visualizer',
       waveColor: '#c3c3c3',
       progressColor: '#336cfb',
+      cursorColor: 'rgba(0,0,0,0)',
       barWidth: 2,
       barHeight: 1,
       barGap: null,
@@ -47,6 +48,12 @@ export default {
     this.wavesurfer.on('audioprocess', (amount) => {
       progress.innerHTML = formatSeconds(amount)
     })
+    let waves = this.wavesurfer.container.getElementsByTagName('wave')
+    let progressWave = waves[1]
+    let mainWave = waves[0]
+    mainWave.addEventListener('mousemove', (e) => {
+      progressWave.style.width = e.offsetX + 'px'
+    })
   },
   data () {
     return {
@@ -59,7 +66,6 @@ export default {
       let img = this.$el.getElementsByTagName('img')[0]
       color(img.src, (_, color) => {
         this.wavesurfer.setProgressColor(`#${color}`)
-        this.wavesurfer.setCursorColor(`#${color}`)
       })
     },
     play () {
@@ -119,5 +125,5 @@ section.player
         height: 64px
         wave
             overflow-x: hidden !important
-            cursor: e-resize
+            cursor: pointer
 </style>
