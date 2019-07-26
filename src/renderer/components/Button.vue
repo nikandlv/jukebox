@@ -64,6 +64,7 @@ export default {
       background-color: darken(#0076F9,5)
   &--outlined 
      background-color: white
+     color: #0076F9
      border: 1px solid #0076F9
      svg
       fill: #0076F9
