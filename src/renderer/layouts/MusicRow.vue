@@ -14,7 +14,7 @@ import carousel from 'vue-owl-carousel'
 export default {
   name: 'MusicRow',
   props: ['items'],
-  components: { MusicBox, Carousel, Slide, carousel }
+  components: { MusicBox, carousel }
 }
 </script>
 
