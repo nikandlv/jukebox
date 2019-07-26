@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel'
 import MusicBox from '../components/MusicBox'
 import carousel from 'vue-owl-carousel'
 
