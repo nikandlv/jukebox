@@ -7,6 +7,7 @@
         </div>
         <div class="visualizer">
             <div id="visualizer"></div>
+            <div id="minimap" class="shade"></div>
         </div>
         <div class="duration">
             <p class="progress active">00:00</p>
@@ -23,6 +24,7 @@
 
 <script>
 import WaveSurfer from 'wavesurfer.js'
+import minimap from 'wavesurfer.js/dist/plugin/wavesurfer.minimap'
 import color from 'dominant-color'
 import { formatSeconds } from '../utility/DateTime'
 export default {
@@ -39,18 +41,36 @@ export default {
       barGap: null,
       autoCenter: true,
       responsive: true,
-      height: 64
+      height: 64,
+      plugins: [
+        minimap.create({
+          container: '#minimap',
+          waveColor: '#c3c3c3',
+          progressColor: '#336cfb',
+          cursorColor: 'rgba(0,0,0,0)',
+          barWidth: 2,
+          barHeight: 1,
+          barGap: null,
+          autoCenter: true,
+          responsive: true,
+          height: 64
+        })
+      ]
     })
     this.wavesurfer.load('/static/demo/music.mp3')
     this.wavesurfer.on('ready', () => {
       this.duration = formatSeconds(this.getDuration())
       this.wavesurfer.container.style['height'] = '100%'
-      console.log(this.wavesurfer.container)
+      let map = this.wavesurfer.minimap.drawer.container
+      map.style['height'] = '100%'
     })
     let currentWidth = 0
     let hoverStatus = false
     let hoverWidth = '0px'
     let isSeek = false
+    let progressWave = this.wavesurfer.minimap.drawer.container.getElementsByTagName('wave')[1]
+    progressWave.style['zIndex'] = 4
+    let mainWave = this.wavesurfer.container.getElementsByTagName('wave')[0]
     this.wavesurfer.on('audioprocess', (amount) => {
       currentWidth = progressWave.style.width
       if (hoverStatus && !isSeek) {
@@ -59,9 +79,6 @@ export default {
       isSeek = false
       progress.innerHTML = formatSeconds(amount)
     })
-    let waves = this.wavesurfer.container.getElementsByTagName('wave')
-    let progressWave = waves[1]
-    let mainWave = waves[0]
     mainWave.addEventListener('mouseenter', (e) => {
       isSeek = false
       hoverStatus = true
@@ -93,6 +110,8 @@ export default {
       let img = this.$el.getElementsByTagName('img')[0]
       color(img.src, (_, color) => {
         this.wavesurfer.setProgressColor(`#${color}`)
+        this.wavesurfer.minimap.params.progressColor = `#${color}`
+        this.wavesurfer.minimap.drawer.updateSize()
       })
     },
     play () {
@@ -138,10 +157,11 @@ section.player
     display: flex
     align-items: center
     border-top: 1px solid rgba(0,0,0,0.1)
-    height: 5rem
+    height: 4.5rem
+    min-height: 4.5rem
     img.artwork
-        height: 100%
-        width: auto
+        height: 4.5rem
+        width: 4.5rem
     p.title,p.artist
         font-size: .8rem
         margin: 8px 10px
@@ -160,9 +180,11 @@ section.player
           transition: height 500ms ease
           height: 0px
           width: 100%
+          z-index: 
           &.shade
               pointer-events: none
-              opacity: 0.2
+              z-index: 2
+              opacity: .6
         wave
             overflow-x: hidden !important
             cursor: pointer
