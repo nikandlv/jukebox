@@ -33,19 +33,53 @@ export default {
       container: '#visualizer',
       waveColor: '#c3c3c3',
       progressColor: '#336cfb',
+      cursorColor: 'rgba(0,0,0,0)',
       barWidth: 2,
       barHeight: 1,
       barGap: null,
       autoCenter: true,
-      height: 64,
-      responsive: true
+      responsive: true,
+      height: 64
     })
     this.wavesurfer.load('/static/demo/music.mp3')
     this.wavesurfer.on('ready', () => {
       this.duration = formatSeconds(this.getDuration())
+      this.wavesurfer.container.style['height'] = '100%'
+      console.log(this.wavesurfer.container)
     })
+    let currentWidth = 0
+    let hoverStatus = false
+    let hoverWidth = '0px'
+    let isSeek = false
     this.wavesurfer.on('audioprocess', (amount) => {
+      currentWidth = progressWave.style.width
+      if (hoverStatus && !isSeek) {
+        progressWave.style.width = hoverWidth
+      }
+      isSeek = false
       progress.innerHTML = formatSeconds(amount)
+    })
+    let waves = this.wavesurfer.container.getElementsByTagName('wave')
+    let progressWave = waves[1]
+    let mainWave = waves[0]
+    mainWave.addEventListener('mouseenter', (e) => {
+      isSeek = false
+      hoverStatus = true
+    })
+    mainWave.addEventListener('mousemove', (e) => {
+      hoverWidth = e.offsetX + 'px'
+      progressWave.style.width = hoverWidth
+    })
+    mainWave.addEventListener('mouseout', (e) => {
+      hoverStatus = false
+      progressWave.style.width = currentWidth
+    })
+    this.wavesurfer.on('seek', (amount) => {
+      if (!this.playingStatus) {
+        this.wavesurfer.drawer.progress(amount)
+      }
+      isSeek = true
+      currentWidth = progressWave.style.width
     })
   },
   data () {
@@ -59,7 +93,6 @@ export default {
       let img = this.$el.getElementsByTagName('img')[0]
       color(img.src, (_, color) => {
         this.wavesurfer.setProgressColor(`#${color}`)
-        this.wavesurfer.setCursorColor(`#${color}`)
       })
     },
     play () {
@@ -117,7 +150,22 @@ section.player
     .visualizer
         flex-grow: 1
         height: 64px
+        position: relative
+        div
+          position: absolute
+          left: 0
+          top: 0
+          bottom: 0
+          margin: auto
+          transition: height 500ms ease
+          height: 0px
+          width: 100%
+          &.shade
+              pointer-events: none
+              opacity: 0.2
         wave
             overflow-x: hidden !important
-            cursor: e-resize
+            cursor: pointer
+            transition: width 200ms ease
+            height: 100% !important
 </style>

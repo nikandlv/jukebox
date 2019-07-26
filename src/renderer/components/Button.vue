@@ -29,13 +29,14 @@ export default {
   box-sizing: border-box
   outline: unset
   &--contained 
-    background-color: #336cfb
+    background-color: #0076F9
     color: white
     font-weight: 600
     &:hover
-      background-color: lighten(#336cfb,5)
+      background-color: lighten(#0076F9,5)
     &:focus,&:active
-      background-color: darken(#336cfb,5)
+      background-color: darken(#0076F9,5)
+
   svg
     width: 14px
     height: 14px
@@ -53,26 +54,26 @@ export default {
       background-color: rgba(0,0,0,.15)
 
   &--raised 
-    background-color: #336cfb
+    background-color: #0076F9
     color: white
     font-weight: 600
-    box-shadow: 0 .3rem .7rem rgba(#336cfb , .5)
+    box-shadow: 0 .3rem .7rem rgba(#0076F9 , .5)
     &:hover
-      background-color: lighten(#336cfb,5)
+      background-color: lighten(#0076F9,5)
     &:focus,&:active
-      background-color: darken(#336cfb,5)
+      background-color: darken(#0076F9,5)
   &--outlined 
      background-color: white
-     border: 1px solid #336cfb
+     border: 1px solid #0076F9
      svg
-      fill: #336cfb
+      fill: #0076F9
      &:focus,&:active
-      background-color: darken(#336cfb,5)
+      background-color: darken(#0076F9,5)
       color: white
       svg
         fill: white
      &:hover
-      background-color: #336cfb
+      background-color: #0076F9
       color: white
       svg
         fill: white

@@ -1,29 +1,31 @@
 <template>
-    <section>
-        <legend>Top music of the month</legend>
-        <Carousel class="carousel-custom" :paginationEnabled="false" :scrollPerPage="false" :perPageCustom="[[540, 3], [740, 4], [800, 3], [900, 4],  [1000, 4], [1200, 5] , [1300, 6]]">
-          <Slide v-for="item in items" :key="item.id">
-            <MusicBox  :item="item" />
-          </Slide>
-        </Carousel>
+    <section class="music-row">
+        <legend>Top Rated</legend>
+        <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
+           <MusicBox v-for="item in items" :key="item.id" :item="item" />
+        </carousel>
     </section>
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel'
 import MusicBox from '../components/MusicBox'
+import carousel from 'vue-owl-carousel'
+
 export default {
   name: 'MusicRow',
   props: ['items'],
-  components: { MusicBox, Carousel, Slide }
+  components: { MusicBox, carousel }
 }
 </script>
 
-<style scoped lang="sass">
+<style lang="sass">
 
-section
+section.music-row
     legend
         font-size: 2rem
         font-family: 'Roboto Slab', serif        
         margin: 20px 0px
+    .carousel-custom
+      .owl-stage-outer
+        overflow: unset
 </style>
