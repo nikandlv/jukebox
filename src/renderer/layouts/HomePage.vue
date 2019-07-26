@@ -1,18 +1,28 @@
 <template>
     <section>
       <ActionBar />
-      <div>
+      <div class="upper-row">
         <MusicRow :items='items' />
       </div>
+
+      <div class="middle-row">
+        <List class="grow-half">
+          <ListItem v-for="favourite in favourties" :key="favourite.id"></ListItem>
+        </List>
+        <div class="grow-half"></div>
+      </div>
+
     </section>
 </template>
 
 <script>
 import ActionBar from './ActionBar'
 import MusicRow from './MusicRow'
+import List from './FavouriteList'
+
 export default {
   name: 'HomePage',
-  components: { ActionBar, MusicRow },
+  components: { ActionBar, MusicRow, List },
   data: () => {
     return {
       items: [
@@ -70,6 +80,29 @@ export default {
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
         }
+      ],
+      favourites: [
+        {
+          id: 1,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          duration: '3:30',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 2,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          duration: '4:30',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 3,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          duration: '5:30',
+          artwork: '/static/demo/clever.jpg'
+        }
       ]
     }
   }
@@ -81,5 +114,11 @@ section.page
     padding: 1rem 2.5rem
     overflow-x: hidden
     .VueCarousel-wrapper
-        overflow: unset
+      overflow: unset
+
+    .middle-row
+      display: flex
+
+    .grow-half
+      flex: 1 0 50% // deviding the space equally between two element
 </style>
