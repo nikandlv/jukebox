@@ -132,12 +132,12 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 section.page
   padding: 1rem 2.5rem
   overflow-x: hidden
   .VueCarousel-wrapper
-    overflow: unset
+     overflow: unset
 
   .middle-row
     display: flex

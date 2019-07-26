@@ -45,14 +45,34 @@ export default {
     this.wavesurfer.on('ready', () => {
       this.duration = formatSeconds(this.getDuration())
     })
+    let currentWidth = 0
+    let hoverStatus = false
+    let hoverWidth = '0px'
+    let isSeek = false
     this.wavesurfer.on('audioprocess', (amount) => {
+      currentWidth = progressWave.style.width
+      if (hoverStatus && !isSeek) {
+        progressWave.style.width = hoverWidth
+      }
+      isSeek = false
       progress.innerHTML = formatSeconds(amount)
     })
     let waves = this.wavesurfer.container.getElementsByTagName('wave')
     let progressWave = waves[1]
     let mainWave = waves[0]
+    mainWave.addEventListener('mouseenter', (e) => {
+      hoverStatus = true
+    })
     mainWave.addEventListener('mousemove', (e) => {
-      progressWave.style.width = e.offsetX + 'px'
+      hoverWidth = e.offsetX + 'px'
+      progressWave.style.width = hoverWidth
+    })
+    mainWave.addEventListener('mouseout', (e) => {
+      hoverStatus = false
+      progressWave.style.width = currentWidth
+    })
+    this.wavesurfer.on('seek', (amount) => {
+      isSeek = true
     })
   },
   data () {
@@ -126,4 +146,5 @@ section.player
         wave
             overflow-x: hidden !important
             cursor: pointer
+            transition: width 200ms ease
 </style>
