@@ -1,7 +1,7 @@
 <template>
   <li>
       <div class="song">
-        <img :src="item.artwork" alt="Artwork">  
+        <img @load="onLoad" :src="item.artwork" alt="Artwork">  
         {{item.title}}
       </div>
 
@@ -16,9 +16,21 @@
 </template>
 
 <script>
+import color from 'dominant-color'
 export default {
   name: 'ListItem',
-  props: ['item']
+  props: ['item'],
+
+  methods: {
+    onLoad () {
+      let img = this.$el.getElementsByTagName('img')[0]
+      let list = this.$el.getElementsByTagName('li')[0]
+
+      color(img.src, {format: 'hex'}, (_, color) => {
+        list.style.backgroundColor = `#${color}`
+      })
+    }
+  }
 }
 </script>
 
@@ -34,6 +46,12 @@ li
     display: flex
     align-items: center
     flex: 1 0 50%
+    
+    img
+      width: 4rem
+      height: 4rem
+      margin-right: .6rem
+      border-radius: 50%
 
   div.artist
     display: flex
@@ -46,10 +64,5 @@ li
     justify-content: center
     flex: 1 0 15%
 
-  img
-    width: 4rem
-    height: 4rem
-    margin-right: .6rem
-    border-radius: 10rem
 </style>
 
