@@ -8,14 +8,13 @@
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel'
 import MusicBox from '../components/MusicBox'
 import carousel from 'vue-owl-carousel'
 
 export default {
   name: 'MusicRow',
   props: ['items'],
-  components: { MusicBox, Carousel, Slide, carousel }
+  components: { MusicBox, carousel }
 }
 </script>
 
