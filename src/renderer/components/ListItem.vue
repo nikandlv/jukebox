@@ -50,6 +50,6 @@ li
     width: 4rem
     height: 4rem
     margin-right: .6rem
-    border-radius: 6px
+    border-radius: 10rem
 </style>
 

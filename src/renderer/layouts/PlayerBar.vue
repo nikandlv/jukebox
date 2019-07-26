@@ -72,6 +72,10 @@ export default {
       progressWave.style.width = currentWidth
     })
     this.wavesurfer.on('seek', (amount) => {
+      if (!this.playingStatus) {
+        this.wavesurfer.updateProgress()
+        console.log('wtf')
+      }
       isSeek = true
     })
   },
