@@ -24,7 +24,8 @@ export default {
 
 <style scoped lang="sass">
 div.music-box
-    width: 140px
+    width: 8.4rem
+    margin: 0 1rem
     img
         border-radius: 100%
         width: 100%

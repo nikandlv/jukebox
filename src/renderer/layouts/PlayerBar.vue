@@ -61,6 +61,7 @@ export default {
     let progressWave = waves[1]
     let mainWave = waves[0]
     mainWave.addEventListener('mouseenter', (e) => {
+      isSeek = false
       hoverStatus = true
     })
     mainWave.addEventListener('mousemove', (e) => {
@@ -73,10 +74,10 @@ export default {
     })
     this.wavesurfer.on('seek', (amount) => {
       if (!this.playingStatus) {
-        this.wavesurfer.updateProgress()
-        console.log('wtf')
+        this.wavesurfer.drawer.progress(amount)
       }
       isSeek = true
+      currentWidth = progressWave.style.width
     })
   },
   data () {
