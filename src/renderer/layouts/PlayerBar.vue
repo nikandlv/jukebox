@@ -38,12 +38,14 @@ export default {
       barHeight: 1,
       barGap: null,
       autoCenter: true,
-      height: 64,
-      responsive: true
+      responsive: true,
+      height: 64
     })
     this.wavesurfer.load('/static/demo/music.mp3')
     this.wavesurfer.on('ready', () => {
       this.duration = formatSeconds(this.getDuration())
+      this.wavesurfer.container.style['height'] = '100%'
+      console.log(this.wavesurfer.container)
     })
     let currentWidth = 0
     let hoverStatus = false
@@ -148,8 +150,22 @@ section.player
     .visualizer
         flex-grow: 1
         height: 64px
+        position: relative
+        div
+          position: absolute
+          left: 0
+          top: 0
+          bottom: 0
+          margin: auto
+          transition: height 500ms ease
+          height: 0px
+          width: 100%
+          &.shade
+              pointer-events: none
+              opacity: 0.2
         wave
             overflow-x: hidden !important
             cursor: pointer
             transition: width 200ms ease
+            height: 100% !important
 </style>
