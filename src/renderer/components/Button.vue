@@ -36,6 +36,7 @@ export default {
       background-color: lighten(#336cfb,5)
     &:focus,&:active
       background-color: darken(#336cfb,5)
+
   svg
     width: 14px
     height: 14px
