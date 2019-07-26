@@ -18,7 +18,7 @@ export default {
     // base styles
     width: 1rem
     height: 1rem
-    background-color: #336cfb
+    background-color: #0076F9
     display: flex
     justify-content: center
     align-items: center

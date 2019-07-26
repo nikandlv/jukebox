@@ -1,7 +1,7 @@
 <template>
-  <li>
+  <li :class="{ 'active': active === true }" @click="toggleActive">
       <div class="song">
-        <img @load="onLoad" :src="item.artwork" alt="Artwork">  
+        <img :src="item.artwork" alt="Artwork">  
         {{item.title}}
       </div>
 
@@ -16,19 +16,20 @@
 </template>
 
 <script>
-import color from 'dominant-color'
+
 export default {
   name: 'ListItem',
   props: ['item'],
 
-  methods: {
-    onLoad () {
-      let img = this.$el.getElementsByTagName('img')[0]
-      let list = this.$el.getElementsByTagName('li')[0]
+  data () {
+    return {
+      active: false
+    }
+  },
 
-      color(img.src, {format: 'hex'}, (_, color) => {
-        list.style.backgroundColor = `#${color}`
-      })
+  methods: {
+    toggleActive () {
+      this.active = !this.active
     }
   }
 }
@@ -41,7 +42,14 @@ li
   display: flex
   justify-content: space-between
   margin-bottom: .6rem
-
+  padding: .4rem .8rem
+  border-radius: .5rem
+  
+  &.active
+    background-color: #0076F9
+    color: white
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)
+    
   div.song
     display: flex
     align-items: center
