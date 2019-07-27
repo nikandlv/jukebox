@@ -26,7 +26,7 @@ $FontPath: '/node_modules/roboto-slab-fontface-kit/fonts'
 @include normalize()
  
 $lato-font-path: '/node_modules/lato-font/fonts'
- 
+
 @include lato-include-font('normal')
 
 
