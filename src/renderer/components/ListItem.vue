@@ -44,7 +44,7 @@ li
   margin-bottom: .6rem
   padding: .4rem .8rem
   border-radius: .5rem
-  
+  box-sizing: border-box
   &.active
     background-color: #0076F9
     color: white

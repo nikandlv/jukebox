@@ -218,12 +218,14 @@ section.page
     flex: 1 0 50% // deviding the space equally between two element
 
 .favourite
+  background: white
+  z-index: 10
   &__list-header
     width: 100%
-    padding: 0.3rem .6rem
+    padding: 0.3rem 1.6rem
+    box-sizing: border-box
     display: flex
     justify-content: space-between
-
     span.song
         flex: 1 0 50%
     span.artist
