@@ -35,7 +35,7 @@
             <legend>Recommended For You</legend>
           </div>
 
-          <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
+          <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom half">
             <MusicBox v-for="item in items" :key="item.id" :item="item" />
           </carousel>
 
@@ -275,6 +275,8 @@ section.page
       font-weight: 200
       margin-left: 1rem
   .carousel-custom
+      &.half
+        width: 0rem
       .owl-stage-outer
         overflow: unset
 
