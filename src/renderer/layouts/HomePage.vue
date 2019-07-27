@@ -33,7 +33,6 @@
         <div class="grow-half recommend" >
           <div class="recommend__title">
             <legend>Recommended For You</legend>
-            <h3>Rock</h3>
           </div>
 
           <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
@@ -206,8 +205,6 @@ export default {
 </script>
 
 <style lang="sass">
-@import url('https://fonts.googleapis.com/css?family=Nothing+You+Could+Do&display=swap') // have to refactor this
-
 section.page
   padding: 1rem 2.5rem
   overflow-x: hidden
@@ -274,7 +271,6 @@ section.page
     h3
       font-size: 1.5rem
       font-weight: 200
-      font-family: 'Nothing You Could Do', cursive;
       margin-left: 1rem
   .carousel-custom
       .owl-stage-outer
