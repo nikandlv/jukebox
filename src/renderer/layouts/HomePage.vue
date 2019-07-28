@@ -49,7 +49,7 @@
       <div class="lower-row">
         <div class="genre">
           <div class="genre__title">
-            <legend>Recommended For You</legend>
+            <legend>top geners</legend>
           </div>
 
           <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
@@ -334,7 +334,7 @@ section.page
     legend
       font-size: 2rem
       font-family: 'Roboto Slab', serif        
-      margin: 15px 0px 20px 0
+      margin: 25px 0
       text-transform: capitalize
 
     h3
