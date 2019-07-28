@@ -46,6 +46,17 @@
         </div> <!-- recommended box -->
       </div>
 
+      <div class="lower-row">
+        <div class="genre">
+          <div class="genre__title">
+            <legend>Recommended For You</legend>
+          </div>
+
+          <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
+            <MusicBox v-for="genere in geners" :key="genere.id" :item="genere" />
+          </carousel>
+        </div>
+      </div>
     </section>
 </template>
 
@@ -198,6 +209,62 @@ export default {
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
         }
+      ],
+      geners: [
+        {
+          id: 0,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 1,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 2,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 3,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 4,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 5,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 6,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 7,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 8,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        }
       ]
     }
   }
@@ -287,4 +354,15 @@ section.page
   .recommend
     margin-left: 0
     margin-top: 1.5rem
+
+.genre
+  &__title
+    legend
+      font-size: 2rem
+      font-family: 'Roboto Slab', serif        
+      margin: 15px 0px 20px 0
+      text-transform: capitalize
+  .carousel-custom
+    .owl-stage-outer
+      overflow: unset
 </style>
