@@ -1,17 +1,17 @@
 <template>
     <section class="player">
-        <img @load="onArtworkLoad" class="artwork" src="/static/demo/artwork.jpg" />
+        <img @load="onArtworkLoad" class="artwork" src="/static/demo/yellow.jpeg" />
         <div>
-            <p class="title">Don't Let Me Down</p>
-            <p class="artist">The Chainsmokers</p>
+            <p class="title">Yellow</p>
+            <p class="artist">Rich Brian</p>
         </div>
         <div class="visualizer">
             <div id="visualizer"></div>
             <div id="minimap" class="shade"></div>
         </div>
         <div class="duration">
-            <p class="progress active">00:00</p>
-            <p>{{duration}}</p>
+            <p class="currentTime progress active">00:00</p>
+            <p class="remainingTime">{{duration}}</p>
         </div>
         <div class="control-buttons">
             <div class="play-pause-button" @click="togglePlay">
@@ -162,10 +162,10 @@ section.player
     img.artwork
         height: 4.5rem
         width: 4.5rem
-    p.title,p.artist
+    p.title,p.artist,.currentTime,.remainingTime
         font-size: .8rem
         margin: 8px 10px
-    p.artist
+    p.artist,.remainingTime
         color: lighten(black,45)
     .visualizer
         flex-grow: 1
