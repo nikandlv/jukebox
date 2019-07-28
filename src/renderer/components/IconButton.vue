@@ -25,6 +25,7 @@ export default {
   justify-content: center
   align-items: center
   width: 38px
+  cursor: pointer
   height: 38px
   text-decoration: none
   text-transform: capitalize
