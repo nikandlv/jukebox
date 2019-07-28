@@ -1,63 +1,63 @@
 <template>
-    <section>
-      <ActionBar class="action-bar" />
-      <div class="upper-row">
-        <MusicRow :items='items' />
-      </div>
-
-      <div class="middle-row">
-        <div class="grow-half favourite">
-          <div class="favourite__title-container">
-            <legend>favourite songs</legend>
-            <Button variant="outlined" class="view-all">View All</Button>
-          </div>
-          
-          <div class="favourite__list-header">
-            <span class="song">
-              <p>songs</p>
-            </span>
-
-            <span class="artist">
-              <p>artist</p>
-            </span>
-
-            <span class="duration">
-              <p>duration</p>
-            </span>
-          </div>
-          <List >
-            <ListItem v-for="favourite in favourites" :key="favourite.id" :item="favourite"></ListItem>
-          </List>
-        </div> <!-- favourite box-->
-
-        <div class="grow-half recommend" >
-          <div class="recommend__title">
-            <legend>Recommended For You</legend>
-          </div>
-
-          <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom half">
-            <MusicBox v-for="item in items" :key="item.id" :item="item" />
-          </carousel>
-
-          <!-- <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
-            <MusicBox v-for="item in items" :key="item.id" :item="item" />
-          </carousel> -->
-
-        </div> <!-- recommended box -->
-      </div>
-
-      <div class="lower-row">
-        <div class="genre">
-          <div class="genre__title">
-            <legend>top geners</legend>
-          </div>
-
-          <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
-            <MusicBox v-for="genere in geners" :key="genere.id" :item="genere" />
-          </carousel>
+      <section class="wtf">
+        <ActionBar class="action-bar" />
+        <div class="upper-row">
+          <MusicRow :items='items' />
         </div>
-      </div>
-    </section>
+
+        <div class="middle-row">
+          <div class="grow-half favourite">
+            <div class="favourite__title-container">
+              <legend>favourite songs</legend>
+              <Button variant="outlined" class="view-all">View All</Button>
+            </div>
+            
+            <div class="favourite__list-header">
+              <span class="song">
+                <p>songs</p>
+              </span>
+
+              <span class="artist">
+                <p>artist</p>
+              </span>
+
+              <span class="duration">
+                <p>duration</p>
+              </span>
+            </div>
+            <List >
+              <ListItem v-for="favourite in favourites" :key="favourite.id" :item="favourite"></ListItem>
+            </List>
+          </div> <!-- favourite box-->
+
+          <div class="grow-half recommend" >
+            <div class="recommend__title">
+              <legend>Recommended For You</legend>
+            </div>
+
+            <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom half">
+              <MusicBox v-for="item in items" :key="item.id" :item="item" />
+            </carousel>
+
+            <!-- <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
+              <MusicBox v-for="item in items" :key="item.id" :item="item" />
+            </carousel> -->
+
+          </div> <!-- recommended box -->
+        </div>
+
+        <div class="lower-row">
+          <div class="genre">
+            <div class="genre__title">
+              <legend>top geners</legend>
+            </div>
+
+            <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
+              <MusicBox v-for="genere in geners" :key="genere.id" :item="genere" />
+            </carousel>
+          </div>
+        </div>
+      </section>
 </template>
 
 <script>
@@ -68,10 +68,15 @@ import ListItem from '../components/ListItem'
 import Button from '../components/Button'
 import carousel from 'vue-owl-carousel'
 import MusicBox from '../components/MusicBox'
+import Scrollbar from 'smooth-scrollbar'
 
 export default {
   name: 'HomePage',
   components: { ActionBar, MusicRow, List, ListItem, Button, carousel, MusicBox },
+  mounted () {
+    let container = this.$el
+    Scrollbar.init(container)
+  },
   data: () => {
     return {
       items: [

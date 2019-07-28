@@ -17,8 +17,7 @@
             <Logo :nopadding="true"/>
         </section>
         <section class="overlay" :class="{'open': menuStatus === true}"  @click="toggleMenuStatus" />
-        <section >
-            <vue-custom-scrollbar class="sidebar" :class="{'open': menuStatus === true}"  :settings="settings">
+            <section class="sidebar" :class="{'open': menuStatus === true}">
                 <div class="logo-wrapper">
                     <Logo class="logo" />
                 </div>
@@ -116,8 +115,7 @@
                         Version {{version}}
                     </MenuItem>
                 </MenuGroup>
-            </vue-custom-scrollbar>
-        </section>        
+            </section>
     </div>
 </template>
 
@@ -128,13 +126,16 @@ import projectPackage from '~/package.json'
 import Logo from '../components/Logo'
 import { mapActions, mapGetters } from 'vuex'
 import Button from '../components/Button'
-import vueCustomScrollbar from 'vue-custom-scrollbar'
-
+import Scrollbar from 'smooth-scrollbar'
 export default {
   name: 'DockableSidebar',
-  components: { MenuGroup, MenuItem, Logo, Button, vueCustomScrollbar },
+  components: { MenuGroup, MenuItem, Logo, Button },
   data: () => {
-    return { version: projectPackage.version, settings: { maxScrollbarLength: 60, swipeEasing: true, wheelSpeed: 0.5 } }
+    return { version: projectPackage.version }
+  },
+  mounted () {
+    let container = this.$el.getElementsByClassName('sidebar')[0]
+    Scrollbar.init(container)
   },
   methods: {
     ...mapActions(['toggleMenuStatus'])
@@ -143,7 +144,7 @@ export default {
 }
 </script>
 
-<style scoped lang="sass">
+<style lang="sass">
 section.handle
     position: absolute
     left: 0
@@ -198,6 +199,9 @@ section.sidebar
     flex-direction: column
     overflow-y: hidden
     transition: width 300ms,transform 300ms,padding 500ms
+    .scroll-content
+        display: flex
+        flex-direction: column
     .logo-wrapper
         min-height: 48px
         .icon

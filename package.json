@@ -61,6 +61,7 @@
     "dominant-color": "0.0.1",
     "normalize-scss": "^7.0.1",
     "roboto-slab-fontface-kit": "^1.0.2",
+    "smooth-scrollbar": "^8.4.0",
     "vue": "^2.5.16",
     "vue-custom-scrollbar": "^1.1.0",
     "vue-electron": "^1.0.6",
