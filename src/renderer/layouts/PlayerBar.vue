@@ -14,23 +14,16 @@
             <p class="remainingTime">{{duration}}</p>
         </div>
         <div class="control-buttons">
-            <IconButton >
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-            </IconButton>
             <IconButton variant="contained">
                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
             </IconButton>
-            <IconButton variant="raised large">
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            <IconButton variant="contained large" :click="togglePlay">
+                <svg v-show="playingStatus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                <svg v-show="!playingStatus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
             </IconButton>
-            <IconButton variant="outlined small">
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-            </IconButton>
-            <div class="play-pause-button" @click="togglePlay">
-                <svg v-show="!playingStatus" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z"/></svg>
-                <svg v-show="playingStatus" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 28h-4V16h4v16zm8 0h-4V16h4v16z"/></svg>
-            </div>
+            <IconButton variant="contained">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            </IconButton>
         </div>
     </section>
 </template>
@@ -123,10 +116,16 @@ export default {
   methods: {
     onArtworkLoad () {
       let img = this.$el.getElementsByTagName('img')[0]
+      let controlIcons = this.$el.getElementsByClassName('control-buttons')[0].children
       color(img.src, (_, color) => {
         this.wavesurfer.setProgressColor(`#${color}`)
         this.wavesurfer.minimap.params.progressColor = `#${color}`
         this.wavesurfer.minimap.drawer.updateSize()
+        for (let child in controlIcons) {
+          if (typeof controlIcons[child] === 'object') {
+            controlIcons[child].style.backgroundColor = `#${color}`
+          }
+        }
       })
     },
     play () {
@@ -175,6 +174,8 @@ section.player
     height: 4.5rem
     min-height: 4.5rem
     .control-buttons
+      span
+        margin: 0 0.2rem
       display: flex
       align-items: center
     img.artwork

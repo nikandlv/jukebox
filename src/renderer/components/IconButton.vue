@@ -1,8 +1,8 @@
 <template>
-  <a href="#" role="button" class="icon-button" :class="className">
+  <span @click="onClick" role="button" class="icon-button" :class="className">
     <slot name="icon"></slot>
     <slot></slot>
-  </a>
+  </span>
 </template>
 
 <script>
@@ -10,11 +10,11 @@ export default {
   name: 'IconButton',
   data () {
     return {
-      className: `icon-button--` + this.variant
+      className: `icon-button--` + this.variant,
+      onClick: this.click || (() => {})
     }
   },
-
-  props: ['variant']
+  props: ['variant', 'click']
 
 }
 </script>
