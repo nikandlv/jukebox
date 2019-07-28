@@ -69,13 +69,14 @@ import Button from '../components/Button'
 import carousel from 'vue-owl-carousel'
 import MusicBox from '../components/MusicBox'
 import Scrollbar from 'smooth-scrollbar'
-
+import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll'
+Scrollbar.use(OverscrollPlugin)
 export default {
   name: 'HomePage',
   components: { ActionBar, MusicRow, List, ListItem, Button, carousel, MusicBox },
   mounted () {
     let container = this.$el
-    Scrollbar.init(container)
+    Scrollbar.init(container, { overscrollEffect: 'bounce', continuousScrolling: true })
   },
   data: () => {
     return {

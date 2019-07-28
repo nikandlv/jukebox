@@ -127,6 +127,8 @@ import Logo from '../components/Logo'
 import { mapActions, mapGetters } from 'vuex'
 import Button from '../components/Button'
 import Scrollbar from 'smooth-scrollbar'
+import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll'
+Scrollbar.use(OverscrollPlugin)
 export default {
   name: 'DockableSidebar',
   components: { MenuGroup, MenuItem, Logo, Button },
@@ -135,7 +137,7 @@ export default {
   },
   mounted () {
     let container = this.$el.getElementsByClassName('sidebar')[0]
-    Scrollbar.init(container)
+    Scrollbar.init(container, { overscrollEffect: 'bounce', continuousScrolling: true })
   },
   methods: {
     ...mapActions(['toggleMenuStatus'])
