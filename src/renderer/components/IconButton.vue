@@ -1,15 +1,15 @@
 <template>
-  <a href="#" role="button" class="button" :class="className">
-    <slot name="icon"></slot>
+  <a href="#" role="button" class="icon-button" :class="className">
     <slot></slot>
   </a>
 </template>
 
 <script>
 export default {
+  name: 'IconButton',
   data () {
     return {
-      className: `button--` + this.variant
+      className: `icon-button--` + this.variant
     }
   },
 
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.button 
+.icon-button 
   font-size: .9rem
   text-decoration: none
   padding: .5rem 1rem
