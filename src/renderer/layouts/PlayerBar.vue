@@ -14,7 +14,9 @@
             <p class="remainingTime">{{duration}}</p>
         </div>
         <div class="control-buttons">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            <IconButton variant="outlined">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            </IconButton>
             <div class="play-pause-button" @click="togglePlay">
                 <svg v-show="!playingStatus" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-4 29V15l12 9-12 9z"/></svg>
                 <svg v-show="playingStatus" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2 28h-4V16h4v16zm8 0h-4V16h4v16z"/></svg>
@@ -29,8 +31,10 @@ import WaveSurfer from 'wavesurfer.js'
 import minimap from 'wavesurfer.js/dist/plugin/wavesurfer.minimap'
 import color from 'dominant-color'
 import { formatSeconds } from '../utility/DateTime'
+import IconButton from '../components/IconButton'
 export default {
   name: 'PlayerBar',
+  components: { IconButton },
   mounted () {
     let progress = this.$el.getElementsByClassName('progress')[0]
     this.wavesurfer = WaveSurfer.create({

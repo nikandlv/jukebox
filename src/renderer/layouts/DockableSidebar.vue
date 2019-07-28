@@ -81,7 +81,7 @@
                     </MenuItem>
                 </MenuGroup>
 
-                <Button variant="contained" class="playlist-button">
+                <Button class="playlist-button">
                     <template v-slot:icon>
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 286.376 286.376" style="enable-background:new 0 0 286.376 286.376;" xml:space="preserve">
                             <g id="Add">
