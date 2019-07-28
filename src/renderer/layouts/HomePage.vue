@@ -1,6 +1,6 @@
 <template>
     <section>
-      <ActionBar />
+      <ActionBar class="action-bar" />
       <div class="upper-row">
         <MusicRow :items='items' />
       </div>
@@ -273,11 +273,13 @@ export default {
 
 <style lang="sass">
 section.page
-  padding: 1rem 2.5rem
   overflow-x: hidden
   .VueCarousel-wrapper
       overflow: unset
-
+  .action-bar
+    padding: 1rem 2.5rem
+  .upper-row
+    padding: 1rem 2.5rem
   .middle-row
     display: flex
 
@@ -286,6 +288,7 @@ section.page
 
 .favourite
   background: white
+  padding: 1rem 2.5rem
   z-index: 10
   &__list-header
     width: 100%
@@ -356,6 +359,7 @@ section.page
     margin-top: 1.5rem
 
 .genre
+  padding: 1rem 2.5rem
   &__title
     legend
       font-size: 2rem
