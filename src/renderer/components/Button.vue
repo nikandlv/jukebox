@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  name: 'Button',
   data () {
     return {
       className: `button--` + this.variant
