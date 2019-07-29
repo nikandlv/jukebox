@@ -1,8 +1,8 @@
 <template>
       <section class="wtf">
         <ActionBar class="action-bar" />
-        <div class="upper-row">
-          <MusicRow :items='items' />
+        <div class="upper-row" >
+          <MusicRow :items='items' title="Top rated" />
         </div>
 
         <div class="middle-row">
@@ -31,30 +31,13 @@
           </div> <!-- favourite box-->
 
           <div class="grow-half recommend" >
-            <div class="recommend__title">
-              <legend>Recommended For You</legend>
-            </div>
-
-            <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom half">
-              <MusicBox v-for="item in items" :key="item.id" :item="item" />
-            </carousel>
-
-            <!-- <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
-              <MusicBox v-for="item in items" :key="item.id" :item="item" />
-            </carousel> -->
-
+            <MusicRow :items='items' title="Recommended for you" class="carousel-custom half" /> 
           </div> <!-- recommended box -->
         </div>
 
         <div class="lower-row">
           <div class="genre">
-            <div class="genre__title">
-              <legend>top geners</legend>
-            </div>
-
-            <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
-              <MusicBox v-for="genere in geners" :key="genere.id" :item="genere" />
-            </carousel>
+            <MusicRow :items='geners' title="Top genres" class="carousel-custom half" /> 
           </div>
         </div>
       </section>
