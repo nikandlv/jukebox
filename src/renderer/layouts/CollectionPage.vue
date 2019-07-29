@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'CollectionPage'
+  name: 'CollectionPage'
 }
 </script>
 

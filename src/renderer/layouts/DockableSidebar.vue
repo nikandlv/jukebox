@@ -31,7 +31,7 @@
                         </template>
                         Artists
                     </MenuItem>
-                    <MenuItem to="/artists">
+                    <MenuItem to="/collection/songs">
                         <template v-slot:icon>
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" viewBox="0 0 18 18">
                                 <image id="icons8-musical-notes-64" width="18" height="18" xlink:href="data:image/png;base64,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"/>
@@ -39,15 +39,15 @@
                         </template>
                         Songs
                     </MenuItem>
-                    <MenuItem to="/artists">
+                    <MenuItem to="/collections">
                         <template v-slot:icon>
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" viewBox="0 0 18 18">
                                 <image id="icons8-micro-50" width="18" height="18" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAABpFBMVEVHcEyNbJ6NbJ+MbJ+JbZuMbZ6NbJ+NbZ+NbJ+AgKqNbJ+NbJ+Ma5+Jdp2MbJ+ObZ6ZZpmNbJ+Qb52Nap6ObJ+MbJ+NbJ+OaKGNbJ6Qb5uPcKONbJ+NbJ+Na5+ObZ/6796NbJ/v2L7Noaf/9/D205ekhqekhqajhKaUdKOni67auJn37uv20pfvy5jg0M/Gm6aQb6CQcKGkiLCcf6jkzLrv49iNbZ+VdaORcaLCq73Drr6WdqHFsMC6orm0l6yZe6aObaD67t63nreTcqLs3dWZeJ6+lKWjhqvDrb6mhJ2bfafOusX16dumia3l2N3BnpvDmabDmKb10pfNrJrn2NOad6Cfe6GRcJ+0kpznxJjxz5eTcp+hg6yulbPv4tfsyZjm19PZycyqip3l1tLwzpeuk7K2lJzLqJrtypitk7LBqr3LuMu1kpz88+3m1tLtypffz9n78e2mi7Gqj6+de56dgKv37uraysyjh6+2k5zYtpqpi6fyz5eggqrayczayMuqiJz00Zesi53Zt5nw49iqiZ2ffp62lZz57t2hhKuScaKhhKrOGDmCAAAAH3RSTlMAiebsHKnxiOUG8PrYDVB8CuInHdrP2RvWFxmqr/LvpSyrRQAAAaJJREFUWMPt11V3wjAYBuAJDObu0pe2bAxnGxvM3d3d3d3d5U+vFM7O2FZGEy55L5JeNE96vqQ5bUhIMMEIiQwNg3eiY+ITZAAq/JHUTP8BNbo57+ztHiEjy28A4H7FUIS0dBrAJaQoaADu+BSJcbEUAGfYh4+oVZH/AdzWxqTVB6H6BjDyY4aaDmAAauCrEhSAuxLSQGF7a6M0wLJss1gJacA1RUtHpzTAipXwBYyOAA315jpigF8caCsFiivtpICQsZ4moIYC4Pl+/e97ZAE8TwG83J8bqQChhIcr4xSAsATABBXwenMA1FIAwsVgVblsYHr9yvEFEGzlOZ3rRXgmBhasmNebLu+IgSUsS24hvwAdVmmBHff4GeiIgDWcGV3jjZuYIgK2bXjSm0wPt7DNki3jdZn70Cw7YcgAxu78cLy/OR8ZUuD/Yz2QgN8pZJguT08G5Gs0Wk/vBWgIEmigQKuR2fwAxKeQ2QQW0Ap1ldd8A3JRQlDECvSyrAVRApCDCwKhGkN9lmEoBSApD8QJF79mk7MjyIZHKBXBv6VgPPkE11FqOdlbQOcAAAAASUVORK5CYII="/>
                             </svg>
                         </template>
-                        Albums
+                        Collections
                     </MenuItem>
-                    <MenuItem to="/artists">
+                    <MenuItem to="/collection/genres">
                         <template v-slot:icon>
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" viewBox="0 0 18 18">
                                 <image id="icons8-music-record-64" width="18" height="18" xlink:href="data:image/png;base64,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"/>
@@ -66,16 +66,16 @@
                 </MenuGroup>
                 <MenuGroup>
                     <template v-slot:title>Your playlists</template>
-                    <MenuItem to="/">
+                    <MenuItem to="/playlist/test">
                         Hits of this summer
                     </MenuItem>
-                    <MenuItem to="/">
+                    <MenuItem to="/playlist/test1">
                         Classical Music
                     </MenuItem>
-                    <MenuItem to="/">
+                    <MenuItem to="/playlist/test2">
                         Chillout
                     </MenuItem>
-                    <MenuItem to="/">
+                    <MenuItem to="/playlist/test3">
                         Workout
                     </MenuItem>
                 </MenuGroup>

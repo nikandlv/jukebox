@@ -16,6 +16,21 @@ export default new Router({
       component: require('@/layouts/ArtistsPage').default
     },
     {
+      path: '/artist/:id',
+      name: 'ArtistPage',
+      component: require('@/layouts/ArtistPage').default
+    },
+    {
+      path: '/collection/:id',
+      name: 'CollectionPage',
+      component: require('@/layouts/CollectionPage').default
+    },
+    {
+      path: '/playlist/:id',
+      name: 'PlaylistPage',
+      component: require('@/layouts/PlaylistPage').default
+    },
+    {
       path: '*',
       redirect: '/'
     }
