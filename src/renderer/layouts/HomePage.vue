@@ -49,14 +49,13 @@ import MusicRow from './MusicRow'
 import List from './List'
 import ListItem from '../components/ListItem'
 import Button from '../components/Button'
-import carousel from 'vue-owl-carousel'
 import MusicBox from '../components/MusicBox'
 import Scrollbar from 'smooth-scrollbar'
 import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll'
 Scrollbar.use(OverscrollPlugin)
 export default {
   name: 'HomePage',
-  components: { ActionBar, MusicRow, List, ListItem, Button, carousel, MusicBox },
+  components: { ActionBar, MusicRow, List, ListItem, Button, MusicBox },
   mounted () {
     let container = this.$el
     Scrollbar.init(container, { overscrollEffect: 'bounce', continuousScrolling: true })
@@ -333,11 +332,6 @@ section.page
       font-size: 1.5rem
       font-weight: 200
       margin-left: 1rem
-  .carousel-custom
-      &.half
-        width: 0rem
-      .owl-stage-outer
-        overflow: unset
 
 @media(max-width: 1000px)
   .middle-row

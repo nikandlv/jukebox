@@ -1,20 +1,26 @@
 <template>
     <section class="music-row">
         <legend>{{title}}</legend>
-        <carousel :dots="false" :nav="false" :autoWidth="true" class="carousel-custom">
-           <MusicBox v-for="item in items" :key="item.id" :item="item" />
-        </carousel>
+        <section class="items">
+          <MusicBox v-for="item in items" :key="item.id" :item="item" />
+        </section>
     </section>
 </template>
 
 <script>
 import MusicBox from '../components/MusicBox'
-import carousel from 'vue-owl-carousel'
+import Scrollbar from 'smooth-scrollbar'
+import HorizontalScrollPlugin from '../utility/HorizontalScrollPlugin'
+Scrollbar.use(HorizontalScrollPlugin)
 
 export default {
   name: 'MusicRow',
   props: ['items', 'title'],
-  components: { MusicBox, carousel }
+  components: { MusicBox },
+  mounted () {
+    let container = this.$el.getElementsByClassName('items')[0]
+    Scrollbar.init(container, { overscrollEffect: 'bounce', continuousScrolling: true, horizontal: true })
+  }
 }
 </script>
 
@@ -26,7 +32,8 @@ section.music-row
         font-family: 'Roboto Slab', serif        
         margin: 20px 0px
         white-space: nowrap
-    .carousel-custom
-      .owl-stage-outer
-        overflow: unset
+    .items
+      overflow: visible !important
+    .scroll-content
+        display: flex
 </style>
