@@ -333,11 +333,6 @@ section.page
       font-size: 1.5rem
       font-weight: 200
       margin-left: 1rem
-  .carousel-custom
-      &.half
-        width: 0rem
-      .owl-stage-outer
-        overflow: unset
 
 @media(max-width: 1000px)
   .middle-row

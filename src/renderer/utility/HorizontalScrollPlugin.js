@@ -7,6 +7,9 @@ export default class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
         return delta
       }
       // @see: https://github.com/idiotWu/smooth-scrollbar/issues/181
+      if (!this.scrollbar.options.horizontal) {
+        return
+      }
       const { x, y } = delta
       return {
         y: 0,
