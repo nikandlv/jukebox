@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/layouts/HomePage').default
     },
     {
+      path: '/artists',
+      name: 'ArtistsPage',
+      component: require('@/layouts/ArtistsPage').default
+    },
+    {
       path: '*',
       redirect: '/'
     }
