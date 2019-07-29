@@ -21,6 +21,11 @@ export default new Router({
       component: require('@/layouts/ArtistPage').default
     },
     {
+      path: '/collections',
+      name: 'CollectionsPage',
+      component: require('@/layouts/CollectionsPage').default
+    },
+    {
       path: '/collection/:id',
       name: 'CollectionPage',
       component: require('@/layouts/CollectionPage').default
@@ -29,6 +34,11 @@ export default new Router({
       path: '/playlist/:id',
       name: 'PlaylistPage',
       component: require('@/layouts/PlaylistPage').default
+    },
+    {
+      path: '/favorites',
+      name: 'FavoritesPage',
+      component: require('@/layouts/FavoritesPage').default
     },
     {
       path: '*',
