@@ -9,7 +9,6 @@
 
 <script>
 import MusicBox from '../components/MusicBox'
-import carousel from 'vue-owl-carousel'
 import Scrollbar from 'smooth-scrollbar'
 import HorizontalScrollPlugin from '../utility/HorizontalScrollPlugin'
 Scrollbar.use(HorizontalScrollPlugin)
@@ -17,7 +16,7 @@ Scrollbar.use(HorizontalScrollPlugin)
 export default {
   name: 'MusicRow',
   props: ['items', 'title'],
-  components: { MusicBox, carousel },
+  components: { MusicBox },
   mounted () {
     let container = this.$el.getElementsByClassName('items')[0]
     Scrollbar.init(container, { overscrollEffect: 'bounce', continuousScrolling: true, horizontal: true })
