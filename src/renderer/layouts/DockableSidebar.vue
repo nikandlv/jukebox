@@ -194,7 +194,7 @@ section.sidebar
     max-width: 250px
     min-height: 100vh
     max-height: 100vh
-    padding: 2rem 0rem 0rem 2rem
+    padding: 2rem 2rem 0rem 2rem
     box-sizing: border-box
     background-color: #fcfcfc
     display: flex
