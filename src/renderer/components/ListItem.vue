@@ -37,6 +37,7 @@ export default {
 
 <style lang="sass" scoped>
 li
+  transition: background-color 150ms, box-shadow 200ms
   width: 100%
   list-style: none
   display: flex

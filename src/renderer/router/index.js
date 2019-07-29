@@ -11,6 +11,36 @@ export default new Router({
       component: require('@/layouts/HomePage').default
     },
     {
+      path: '/artists',
+      name: 'ArtistsPage',
+      component: require('@/layouts/ArtistsPage').default
+    },
+    {
+      path: '/artist/:id',
+      name: 'ArtistPage',
+      component: require('@/layouts/ArtistPage').default
+    },
+    {
+      path: '/collections',
+      name: 'CollectionsPage',
+      component: require('@/layouts/CollectionsPage').default
+    },
+    {
+      path: '/collection/:id',
+      name: 'CollectionPage',
+      component: require('@/layouts/CollectionPage').default
+    },
+    {
+      path: '/playlist/:id',
+      name: 'PlaylistPage',
+      component: require('@/layouts/PlaylistPage').default
+    },
+    {
+      path: '/favorites',
+      name: 'FavoritesPage',
+      component: require('@/layouts/FavoritesPage').default
+    },
+    {
       path: '*',
       redirect: '/'
     }
