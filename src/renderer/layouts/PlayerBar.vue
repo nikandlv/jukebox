@@ -1,5 +1,5 @@
 <template>
-    <section class="player">
+    <section class="player" :class="{'fullscreen' : isFullscreen}">
         <img @load="onArtworkLoad" class="artwork" src="/static/demo/yellow.jpeg" />
         <div>
             <p class="title">Yellow</p>
@@ -28,7 +28,7 @@
             <IconButton variant="contained">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
             </IconButton>
-            <IconButton variant="contained">
+            <IconButton variant="contained" :click="toggleFullscreen">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
             </IconButton>
         </div>
@@ -44,6 +44,14 @@ import IconButton from '../components/IconButton'
 export default {
   name: 'PlayerBar',
   components: { IconButton },
+  data () {
+    return {
+      playingStatus: false,
+      isFavorited: false,
+      duration: '00:00',
+      isFullscreen: false
+    }
+  },
   mounted () {
     let progress = this.$el.getElementsByClassName('progress')[0]
     this.wavesurfer = WaveSurfer.create({
@@ -114,13 +122,6 @@ export default {
       currentWidth = progressWave.style.width
     })
   },
-  data () {
-    return {
-      playingStatus: false,
-      isFavorited: false,
-      duration: '00:00'
-    }
-  },
   methods: {
     onArtworkLoad () {
       let img = this.$el.getElementsByTagName('img')[0]
@@ -189,6 +190,12 @@ export default {
     },
     toggleFavorite () {
       this.isFavorited = !this.isFavorited
+    },
+    setFullscreen (state) {
+      this.isFullscreen = state
+    },
+    toggleFullscreen () {
+      this.setFullscreen(!this.isFullscreen)
     }
   }
 }

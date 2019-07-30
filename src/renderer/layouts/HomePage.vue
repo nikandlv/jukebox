@@ -1,5 +1,5 @@
 <template>
-      <section class="wtf">
+      <section>
         <ActionBar class="action-bar" />
         <div class="upper-row" >
           <MusicRow :items='items' title="Top rated" />
