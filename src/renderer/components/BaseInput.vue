@@ -20,7 +20,7 @@ export default {
     border: 1px solid lighten(grey, 40)
     background-color: #f9f9f9
     border-radius: 100px
-    padding: .4rem 1.5rem .4rem 0rem
+    padding: .3rem 1.5rem .3rem 0rem
     transition: width 200ms
     input
       height: 100%
