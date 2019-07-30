@@ -36,4 +36,6 @@ section.music-row
       overflow: visible !important
     .scroll-content
         display: flex
+    .scrollbar-thumb,.scrollbar-track
+      display: none !important
 </style>
