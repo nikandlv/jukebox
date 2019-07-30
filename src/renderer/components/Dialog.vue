@@ -1,12 +1,18 @@
 <template>
-    <div class="dialog" :class="{'open' : open}">
+    <div class="dialog-wrapper" :class="{'open' : open}">
+        <div class="overlay">
 
+        </div>
+        <div class="dialog">
+
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Dialog'
+    name: 'Dialog',
+    props: ['open']
 }
 </script>
 
