@@ -272,7 +272,10 @@ section.page
     display: flex
 
   .grow-half
-    flex: 1 0 50% // deviding the space equally between two element
+    flex: 1 0 50% 
+    max-width: 50%
+    &.recommend
+      max-width: 30%
 
 .favourite
   background: white
