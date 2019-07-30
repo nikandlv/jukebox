@@ -2,7 +2,7 @@
   <div id="app" class="root">
     <DockableSidebar />
     <div class="page-wrapper">
-      <router-view class="page"></router-view>
+      <router-view class="page" :class="{'fullscreen' : fullscreenStatus}"></router-view>
       <PlayerBar class="player-bar" />
     </div>
   </div>
@@ -11,10 +11,12 @@
 <script>
 import DockableSidebar from './layouts/DockableSidebar'
 import PlayerBar from './layouts/PlayerBar'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'jukebox',
-  components: { DockableSidebar, PlayerBar }
+  components: { DockableSidebar, PlayerBar },
+  computed: mapGetters(['fullscreenStatus'])
 }
 </script>
 
@@ -56,8 +58,10 @@ img
   -webkit-user-drag: none
   -webkit-user-select: none
   -ms-user-select: none
-  
+
 @media(max-width: 800px)
   .page
     padding-top: 64px
+    &.fullscreen
+      padding-top: 0px
 </style>
