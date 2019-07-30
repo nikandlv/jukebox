@@ -1,5 +1,5 @@
 <template>
-    <section class="player">
+    <section class="player" :class="{'fullscreen' : fullscreenStatus}">
         <img @load="onArtworkLoad" class="artwork" src="/static/demo/yellow.jpeg" />
         <div>
             <p class="title">Yellow</p>
@@ -28,6 +28,9 @@
             <IconButton variant="contained">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
             </IconButton>
+            <IconButton variant="contained" :click="toggleFullscreenStatus">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            </IconButton>
         </div>
     </section>
 </template>
@@ -38,9 +41,20 @@ import minimap from 'wavesurfer.js/dist/plugin/wavesurfer.minimap'
 import color from 'dominant-color'
 import { formatSeconds } from '../utility/DateTime'
 import IconButton from '../components/IconButton'
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'PlayerBar',
   components: { IconButton },
+  data () {
+    return {
+      playingStatus: false,
+      isFavorited: false,
+      duration: '00:00',
+      isFullscreen: false
+    }
+  },
+  computed: mapGetters(['fullscreenStatus']),
   mounted () {
     let progress = this.$el.getElementsByClassName('progress')[0]
     this.wavesurfer = WaveSurfer.create({
@@ -111,13 +125,6 @@ export default {
       currentWidth = progressWave.style.width
     })
   },
-  data () {
-    return {
-      playingStatus: false,
-      isFavorited: false,
-      duration: '00:00'
-    }
-  },
   methods: {
     onArtworkLoad () {
       let img = this.$el.getElementsByTagName('img')[0]
@@ -186,7 +193,8 @@ export default {
     },
     toggleFavorite () {
       this.isFavorited = !this.isFavorited
-    }
+    },
+    ...mapActions(['toggleFullscreenStatus'])
   }
 }
 </script>
@@ -197,7 +205,13 @@ section.player
     align-items: center
     border-top: 1px solid rgba(0,0,0,0.1)
     height: 4.5rem
+    background-color: white
     min-height: 4.5rem
+    transition: height 500ms ease, min-height 500ms ease, width 500ms ease
+    &.fullscreen
+      height: 100vh
+      min-height: 100vh
+      z-index: 1300
     .control-buttons
       span
         margin: 0 0.2rem
@@ -221,7 +235,7 @@ section.player
           top: 0
           bottom: 0
           margin: auto
-          transition: height 500ms ease
+          transition: height 500ms ease ease
           height: 0px
           width: 100%
           z-index: 

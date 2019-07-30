@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="handle" :class="{'open': menuStatus === true}">
+        <section class="handle" :class="{'open': menuStatus, 'fullscreen': fullscreenStatus}">
             <div @click="toggleMenuStatus" class="icon">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
                     <g>
@@ -16,8 +16,8 @@
             </div>
             <Logo :nopadding="true"/>
         </section>
-        <section class="overlay" :class="{'open': menuStatus === true}"  @click="toggleMenuStatus" />
-            <section class="sidebar" :class="{'open': menuStatus === true}">
+        <section class="overlay" :class="{'open': menuStatus, 'fullscreen': fullscreenStatus}"  @click="toggleMenuStatus" />
+            <section class="sidebar" :class="{'open': menuStatus, 'fullscreen': fullscreenStatus}">
                 <div class="logo-wrapper">
                     <Logo class="logo" />
                 </div>
@@ -142,7 +142,7 @@ export default {
   methods: {
     ...mapActions(['toggleMenuStatus'])
   },
-  computed: mapGetters(['menuStatus'])
+  computed: mapGetters(['menuStatus', 'fullscreenStatus'])
 }
 </script>
 
@@ -208,6 +208,13 @@ section.sidebar
         min-height: 48px
         .icon
             display: none
+    &.fullscreen
+        transform: translateX(-100%)
+        overflow-y: hidden
+        z-index: 1200
+        position: absolute
+        left: 0
+        top: 0
     &.open
         transform: translateX(0%)
         padding: 1rem 0rem 0rem 1rem
