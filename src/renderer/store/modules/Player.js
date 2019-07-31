@@ -2,9 +2,9 @@ const state = {
   fullscreen_mode: false,
   currently_playing: {
     id: 8,
-    title: 'Tilte',
-    artist: 'Juice WRLD',
-    artwork: '/static/demo/clever.jpg',
+    title: 'Yellow',
+    artist: 'Rich Brian',
+    artwork: '/static/demo/yellow.jpeg',
     stream: '/static/demo/music.mp3'
   }
 }
