@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="handle" :class="{'open': menuStatus, 'fullscreen': fullscreenStatus}">
+        <section class="handle" :class="{'open': menuStatus}">
             <div @click="toggleMenuStatus" class="icon">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
                     <g>
@@ -16,8 +16,8 @@
             </div>
             <Logo :nopadding="true"/>
         </section>
-        <section class="overlay" :class="{'open': menuStatus, 'fullscreen': fullscreenStatus}"  @click="toggleMenuStatus" />
-            <section class="sidebar" :class="{'open': menuStatus, 'fullscreen': fullscreenStatus}">
+        <section class="overlay" :class="{'open': menuStatus}"  @click="toggleMenuStatus" />
+            <section class="sidebar" :class="{'open': menuStatus}">
                 <div class="logo-wrapper">
                     <Logo class="logo" />
                 </div>
@@ -142,7 +142,7 @@ export default {
   methods: {
     ...mapActions(['toggleMenuStatus'])
   },
-  computed: mapGetters(['menuStatus', 'fullscreenStatus'])
+  computed: mapGetters(['menuStatus'])
 }
 </script>
 
@@ -156,7 +156,7 @@ section.handle
     box-sizing: border-box
     transition: transform 300ms,box-shadow 200ms
     background-color: #fcfcfc
-    transform: translateY(-100%)
+    transform: translate3d(0,-100%,0)
     display: flex
     align-items: center
     z-index: 1210
@@ -208,15 +208,8 @@ section.sidebar
         min-height: 48px
         .icon
             display: none
-    &.fullscreen
-        transform: translateX(-100%)
-        overflow-y: hidden
-        z-index: 1200
-        position: absolute
-        left: 0
-        top: 0
     &.open
-        transform: translateX(0%)
+        transform: translate3d(0%,0,0)
         padding: 1rem 0rem 0rem 1rem
         width: 300px
         overflow-y: hidden
@@ -237,7 +230,7 @@ section.sidebar
         padding: 1rem 0rem 0rem 1rem
 @media(max-width: 800px)
     section.sidebar
-        transform: translateX(-100%)
+        transform: translate3d(-100%,0,0)
         overflow-y: hidden
         z-index: 1200
         position: absolute
@@ -261,5 +254,5 @@ section.sidebar
         .logo
             display: none
     section.handle
-        transform: translateY(0%)
+        transform: translate3d(0,0%,0)
 </style>

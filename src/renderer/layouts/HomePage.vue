@@ -1,5 +1,5 @@
 <template>
-      <section>
+      <section >
         <ActionBar class="action-bar" />
         <div class="upper-row" >
           <MusicRow :items='items' title="Top rated" />
@@ -58,7 +58,7 @@ export default {
   components: { ActionBar, MusicRow, List, ListItem, Button, MusicBox },
   mounted () {
     let container = this.$el
-    Scrollbar.init(container, { overscrollEffect: 'bounce', continuousScrolling: true })
+    Scrollbar.init(container, { overscrollEffect: 'bounce', continuousScrolling: true, alwaysShowTracks: true })
   },
   data: () => {
     return {
@@ -261,6 +261,8 @@ export default {
 
 <style lang="sass">
 section.page
+  .scrollbar-track-x,.scrollbar-thumb-x 
+      display: none !important
   overflow-x: hidden
   .VueCarousel-wrapper
       overflow: unset
