@@ -156,7 +156,7 @@ section.handle
     box-sizing: border-box
     transition: transform 300ms,box-shadow 200ms
     background-color: #fcfcfc
-    transform: translateY(-100%)
+    transform: translate3d(0,-100%,0)
     display: flex
     align-items: center
     z-index: 1210
@@ -209,7 +209,7 @@ section.sidebar
         .icon
             display: none
     &.open
-        transform: translateX(0%)
+        transform: translate3d(0%,0,0)
         padding: 1rem 0rem 0rem 1rem
         width: 300px
         overflow-y: hidden
@@ -230,7 +230,7 @@ section.sidebar
         padding: 1rem 0rem 0rem 1rem
 @media(max-width: 800px)
     section.sidebar
-        transform: translateX(-100%)
+        transform: translate3d(-100%,0,0)
         overflow-y: hidden
         z-index: 1200
         position: absolute
@@ -254,5 +254,5 @@ section.sidebar
         .logo
             display: none
     section.handle
-        transform: translateY(0%)
+        transform: translate3d(0,0%,0)
 </style>
