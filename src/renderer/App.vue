@@ -2,7 +2,7 @@
   <div id="app" class="root">
     <DockableSidebar />
     <div class="page-wrapper">
-      <router-view class="page" :class="{'fullscreen' : fullscreenStatus}"></router-view>
+      <router-view class="page"></router-view>
       <PlayerBar class="player-bar" />
     </div>
   </div>
@@ -31,7 +31,8 @@ $lato-font-path: '/node_modules/lato-font/fonts'
 
 @include lato-include-font('normal')
 
-
+.root
+  position: relative
 .root,.page-wrapper
   display: flex
   @include lato-font('normal')
