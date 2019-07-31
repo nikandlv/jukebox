@@ -1,9 +1,17 @@
 const state = {
-  fullscreen_mode: false
+  fullscreen_mode: false,
+  currently_playing: {
+    id: 8,
+    title: 'Tilte',
+    artist: 'Juice WRLD',
+    artwork: '/static/demo/clever.jpg',
+    stream: '/static/demo/music.mp3'
+  }
 }
 
 const getters = {
-  fullscreenStatus: (state) => state.fullscreen_mode
+  fullscreenStatus: (state) => state.fullscreen_mode,
+  currentlyPlaying: (state) => state.currently_playing
 }
 
 const mutations = {
