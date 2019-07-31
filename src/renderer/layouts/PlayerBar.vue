@@ -1,10 +1,10 @@
 <template>
       <section>
         <section class="player">
-          <img @load="onArtworkLoad" class="artwork" src="/static/demo/yellow.jpeg" />
+          <img @load="onArtworkLoad" class="artwork" :src="currentlyPlaying.artwork" />
           <div>
-              <p class="title">Yellow</p>
-              <p class="artist">Rich Brian</p>
+              <p class="title">{{currentlyPlaying.title}}</p>
+              <p class="artist">{{currentlyPlaying.artist}}</p>
           </div>
           <div class="visualizer">
               <div id="visualizer"></div>
@@ -61,7 +61,7 @@ export default {
       isFullscreen: false
     }
   },
-  computed: mapGetters(['fullscreenStatus']),
+  computed: mapGetters(['fullscreenStatus', 'currentlyPlaying']),
   mounted () {
     let progress = this.$el.getElementsByClassName('progress')[0]
     this.wavesurfer = WaveSurfer.create({
@@ -90,7 +90,7 @@ export default {
         })
       ]
     })
-    this.wavesurfer.load('/static/demo/music.mp3')
+    this.wavesurfer.load(this.currentlyPlaying.stream)
     this.wavesurfer.on('ready', () => {
       this.duration = formatSeconds(this.getDuration())
       this.wavesurfer.container.style['height'] = '100%'
