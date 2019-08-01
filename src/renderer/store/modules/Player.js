@@ -18,10 +18,10 @@ const state = {
     },
     {
       id: 8,
-      title: 'Yellow',
-      artist: 'Rich Brian',
-      artwork: '/static/demo/clever.jpg',
-      stream: '/static/demo/music.mp3'
+      title: 'Ali sorena',
+      artist: 'Negar',
+      artwork: 'http://sakhamusic.ir/wp-content/uploads/2016/03/Ali-Sorena-%E2%80%93-Negar.jpg',
+      stream: 'http://dl.sakhamusic.ir/94/esfand/09/03%20Negar%20(Prod.%20Ehsan%20Ziya)_2.mp3'
     }
   ]
 }

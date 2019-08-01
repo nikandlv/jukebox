@@ -63,77 +63,79 @@ export default {
   },
   computed: mapGetters(['fullscreenStatus', 'currentlyPlaying', 'playerQueue']),
   mounted () {
-    console.log(this.currentlyPlaying)
-    let progress = this.$el.getElementsByClassName('progress')[0]
-    this.wavesurfer = WaveSurfer.create({
-      container: '#visualizer',
-      waveColor: '#c3c3c3',
-      progressColor: '#336cfb',
-      cursorColor: 'rgba(0,0,0,0)',
-      barWidth: 2,
-      barHeight: 1,
-      barGap: null,
-      autoCenter: true,
-      responsive: true,
-      height: 64,
-      plugins: [
-        minimap.create({
-          container: '#minimap',
-          waveColor: '#c3c3c3',
-          progressColor: '#336cfb',
-          cursorColor: 'rgba(0,0,0,0)',
-          barWidth: 2,
-          barHeight: 1,
-          barGap: null,
-          autoCenter: true,
-          responsive: true,
-          height: 64
-        })
-      ]
-    })
-    this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
-    this.wavesurfer.on('ready', () => {
-      this.duration = formatSeconds(this.getDuration())
-      this.wavesurfer.container.style['height'] = '100%'
-      let map = this.wavesurfer.minimap.drawer.container
-      map.style['height'] = '100%'
-    })
-    let currentWidth = 0
-    let hoverStatus = false
-    let hoverWidth = '0px'
-    let isSeek = false
-    let progressWave = this.wavesurfer.minimap.drawer.container.getElementsByTagName('wave')[1]
-    progressWave.style['zIndex'] = 4
-    let mainWave = this.wavesurfer.container.getElementsByTagName('wave')[0]
-    this.wavesurfer.on('audioprocess', (amount) => {
-      currentWidth = progressWave.style.width
-      if (hoverStatus && !isSeek) {
-        progressWave.style.width = hoverWidth
-      }
-      isSeek = false
-      progress.innerHTML = formatSeconds(amount)
-    })
-    mainWave.addEventListener('mouseenter', (e) => {
-      isSeek = false
-      hoverStatus = true
-    })
-    mainWave.addEventListener('mousemove', (e) => {
-      hoverWidth = e.offsetX + 'px'
-      progressWave.style.width = hoverWidth
-    })
-    mainWave.addEventListener('mouseout', (e) => {
-      hoverStatus = false
-      progressWave.style.width = currentWidth
-    })
-    this.wavesurfer.on('seek', (amount) => {
-      if (!this.playingStatus) {
-        this.wavesurfer.drawer.progress(amount)
-      }
-      isSeek = true
-      currentWidth = progressWave.style.width
-    })
+    this.drawVisualizer()
   },
   methods: {
+    drawVisualizer () {
+      let progress = this.$el.getElementsByClassName('progress')[0]
+      this.wavesurfer = WaveSurfer.create({
+        container: '#visualizer',
+        waveColor: '#c3c3c3',
+        progressColor: '#336cfb',
+        cursorColor: 'rgba(0,0,0,0)',
+        barWidth: 2,
+        barHeight: 1,
+        barGap: null,
+        autoCenter: true,
+        responsive: true,
+        height: 64,
+        plugins: [
+          minimap.create({
+            container: '#minimap',
+            waveColor: '#c3c3c3',
+            progressColor: '#336cfb',
+            cursorColor: 'rgba(0,0,0,0)',
+            barWidth: 2,
+            barHeight: 1,
+            barGap: null,
+            autoCenter: true,
+            responsive: true,
+            height: 64
+          })
+        ]
+      })
+      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+      this.wavesurfer.on('ready', () => {
+        this.duration = formatSeconds(this.getDuration())
+        this.wavesurfer.container.style['height'] = '100%'
+        let map = this.wavesurfer.minimap.drawer.container
+        map.style['height'] = '100%'
+      })
+      let currentWidth = 0
+      let hoverStatus = false
+      let hoverWidth = '0px'
+      let isSeek = false
+      let progressWave = this.wavesurfer.minimap.drawer.container.getElementsByTagName('wave')[1]
+      progressWave.style['zIndex'] = 4
+      let mainWave = this.wavesurfer.container.getElementsByTagName('wave')[0]
+      this.wavesurfer.on('audioprocess', (amount) => {
+        currentWidth = progressWave.style.width
+        if (hoverStatus && !isSeek) {
+          progressWave.style.width = hoverWidth
+        }
+        isSeek = false
+        progress.innerHTML = formatSeconds(amount)
+      })
+      mainWave.addEventListener('mouseenter', (e) => {
+        isSeek = false
+        hoverStatus = true
+      })
+      mainWave.addEventListener('mousemove', (e) => {
+        hoverWidth = e.offsetX + 'px'
+        progressWave.style.width = hoverWidth
+      })
+      mainWave.addEventListener('mouseout', (e) => {
+        hoverStatus = false
+        progressWave.style.width = currentWidth
+      })
+      this.wavesurfer.on('seek', (amount) => {
+        if (!this.playingStatus) {
+          this.wavesurfer.drawer.progress(amount)
+        }
+        isSeek = true
+        currentWidth = progressWave.style.width
+      })
+    },
     onArtworkLoad () {
       let img = this.$el.getElementsByTagName('img')[0]
       let controlIcons = this.$el.getElementsByClassName('control-buttons')[0].children
@@ -167,9 +169,11 @@ export default {
     },
     playNext () {
       this.playQueueItem(this.currentlyPlaying + 1)
+      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
     },
     playPrevious () {
       this.playQueueItem(this.currentlyPlaying - 1)
+      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
     },
     play () {
       this.wavesurfer.play()
