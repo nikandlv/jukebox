@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 section.action-bar
   display: flex
   align-items: center
