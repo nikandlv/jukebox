@@ -11,8 +11,8 @@
 
 <script>
 export default {
-    name: 'Dialog',
-    props: ['open']
+  name: 'Dialog',
+  props: ['open']
 }
 </script>
 

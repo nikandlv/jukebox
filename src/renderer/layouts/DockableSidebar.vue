@@ -122,6 +122,7 @@
 <script>
 import MenuGroup from '../components/MenuGroup'
 import MenuItem from '../components/MenuItem'
+import Dialog from '../components/Dialog'
 import projectPackage from '~/package.json'
 import Logo from '../components/Logo'
 import { mapActions, mapGetters } from 'vuex'
@@ -131,7 +132,7 @@ import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll'
 Scrollbar.use(OverscrollPlugin)
 export default {
   name: 'DockableSidebar',
-  components: { MenuGroup, MenuItem, Logo, Button },
+  components: { MenuGroup, MenuItem, Logo, Button, Dialog },
   data: () => {
     return { version: projectPackage.version }
   },
