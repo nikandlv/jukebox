@@ -25,7 +25,7 @@ export default {
     height: 100vh
     display: flex
     align-items: center
-    justify-content: center 
+    justify-content: center
     .overlay
         position: absolute
         left: 0
