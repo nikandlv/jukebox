@@ -1,10 +1,10 @@
 <template>
       <section>
         <section class="player">
-          <img @load="onArtworkLoad" class="artwork" :src="currentlyPlaying.artwork" />
+          <img @load="onArtworkLoad" class="artwork" :src="playerQueue[this.currentlyPlaying].artwork" />
           <div>
-              <p class="title">{{currentlyPlaying.title}}</p>
-              <p class="artist">{{currentlyPlaying.artist}}</p>
+              <p class="title">{{playerQueue[this.currentlyPlaying].title}}</p>
+              <p class="artist">{{playerQueue[this.currentlyPlaying].artist}}</p>
           </div>
           <div class="visualizer">
               <div id="visualizer"></div>
@@ -19,14 +19,14 @@
                 <svg v-show="isFavorited" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path class="colorable" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                 <svg v-show="!isFavorited" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path class="colorable" d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg>
               </IconButton>
-              <IconButton variant="contained">
+              <IconButton variant="contained" :click="playPrevious" :disabled="(currentlyPlaying == 0)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
               </IconButton>
               <IconButton variant="contained large" :click="togglePlay">
                 <svg v-show="playingStatus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
                 <svg v-show="!playingStatus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
               </IconButton>
-              <IconButton variant="contained">
+              <IconButton variant="contained" :click="playNext" :disabled="(currentlyPlaying + 1) >= playerQueue.length">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
               </IconButton>
               <IconButton variant="contained" :click="toggleFullscreenStatus">
@@ -61,78 +61,81 @@ export default {
       isFullscreen: false
     }
   },
-  computed: mapGetters(['fullscreenStatus', 'currentlyPlaying']),
+  computed: mapGetters(['fullscreenStatus', 'currentlyPlaying', 'playerQueue']),
   mounted () {
-    let progress = this.$el.getElementsByClassName('progress')[0]
-    this.wavesurfer = WaveSurfer.create({
-      container: '#visualizer',
-      waveColor: '#c3c3c3',
-      progressColor: '#336cfb',
-      cursorColor: 'rgba(0,0,0,0)',
-      barWidth: 2,
-      barHeight: 1,
-      barGap: null,
-      autoCenter: true,
-      responsive: true,
-      height: 64,
-      plugins: [
-        minimap.create({
-          container: '#minimap',
-          waveColor: '#c3c3c3',
-          progressColor: '#336cfb',
-          cursorColor: 'rgba(0,0,0,0)',
-          barWidth: 2,
-          barHeight: 1,
-          barGap: null,
-          autoCenter: true,
-          responsive: true,
-          height: 64
-        })
-      ]
-    })
-    this.wavesurfer.load(this.currentlyPlaying.stream)
-    this.wavesurfer.on('ready', () => {
-      this.duration = formatSeconds(this.getDuration())
-      this.wavesurfer.container.style['height'] = '100%'
-      let map = this.wavesurfer.minimap.drawer.container
-      map.style['height'] = '100%'
-    })
-    let currentWidth = 0
-    let hoverStatus = false
-    let hoverWidth = '0px'
-    let isSeek = false
-    let progressWave = this.wavesurfer.minimap.drawer.container.getElementsByTagName('wave')[1]
-    progressWave.style['zIndex'] = 4
-    let mainWave = this.wavesurfer.container.getElementsByTagName('wave')[0]
-    this.wavesurfer.on('audioprocess', (amount) => {
-      currentWidth = progressWave.style.width
-      if (hoverStatus && !isSeek) {
-        progressWave.style.width = hoverWidth
-      }
-      isSeek = false
-      progress.innerHTML = formatSeconds(amount)
-    })
-    mainWave.addEventListener('mouseenter', (e) => {
-      isSeek = false
-      hoverStatus = true
-    })
-    mainWave.addEventListener('mousemove', (e) => {
-      hoverWidth = e.offsetX + 'px'
-      progressWave.style.width = hoverWidth
-    })
-    mainWave.addEventListener('mouseout', (e) => {
-      hoverStatus = false
-      progressWave.style.width = currentWidth
-    })
-    this.wavesurfer.on('seek', (amount) => {
-      if (!this.playingStatus) {
-        this.wavesurfer.drawer.progress(amount)
-      }
-      isSeek = true
-      currentWidth = progressWave.style.width
-    })
+    this.drawVisualizer()
   },
   methods: {
+    drawVisualizer () {
+      let progress = this.$el.getElementsByClassName('progress')[0]
+      this.wavesurfer = WaveSurfer.create({
+        container: '#visualizer',
+        waveColor: '#c3c3c3',
+        progressColor: '#336cfb',
+        cursorColor: 'rgba(0,0,0,0)',
+        barWidth: 2,
+        barHeight: 1,
+        barGap: null,
+        autoCenter: true,
+        responsive: true,
+        height: 64,
+        plugins: [
+          minimap.create({
+            container: '#minimap',
+            waveColor: '#c3c3c3',
+            progressColor: '#336cfb',
+            cursorColor: 'rgba(0,0,0,0)',
+            barWidth: 2,
+            barHeight: 1,
+            barGap: null,
+            autoCenter: true,
+            responsive: true,
+            height: 64
+          })
+        ]
+      })
+      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+      this.wavesurfer.on('ready', () => {
+        this.duration = formatSeconds(this.getDuration())
+        this.wavesurfer.container.style['height'] = '100%'
+        let map = this.wavesurfer.minimap.drawer.container
+        map.style['height'] = '100%'
+      })
+      let currentWidth = 0
+      let hoverStatus = false
+      let hoverWidth = '0px'
+      let isSeek = false
+      let progressWave = this.wavesurfer.minimap.drawer.container.getElementsByTagName('wave')[1]
+      progressWave.style['zIndex'] = 4
+      let mainWave = this.wavesurfer.container.getElementsByTagName('wave')[0]
+      this.wavesurfer.on('audioprocess', (amount) => {
+        currentWidth = progressWave.style.width
+        if (hoverStatus && !isSeek) {
+          progressWave.style.width = hoverWidth
+        }
+        isSeek = false
+        progress.innerHTML = formatSeconds(amount)
+      })
+      mainWave.addEventListener('mouseenter', (e) => {
+        isSeek = false
+        hoverStatus = true
+      })
+      mainWave.addEventListener('mousemove', (e) => {
+        hoverWidth = e.offsetX + 'px'
+        progressWave.style.width = hoverWidth
+      })
+      mainWave.addEventListener('mouseout', (e) => {
+        hoverStatus = false
+        progressWave.style.width = currentWidth
+      })
+      this.wavesurfer.on('seek', (amount) => {
+        if (!this.playingStatus) {
+          this.wavesurfer.drawer.progress(amount)
+        }
+        isSeek = true
+        currentWidth = progressWave.style.width
+      })
+    },
     onArtworkLoad () {
       let img = this.$el.getElementsByTagName('img')[0]
       let controlIcons = this.$el.getElementsByClassName('control-buttons')[0].children
@@ -163,6 +166,14 @@ export default {
           }
         }
       })
+    },
+    playNext () {
+      this.playQueueItem(this.currentlyPlaying + 1)
+      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+    },
+    playPrevious () {
+      this.playQueueItem(this.currentlyPlaying - 1)
+      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
     },
     play () {
       this.wavesurfer.play()
@@ -201,7 +212,7 @@ export default {
     toggleFavorite () {
       this.isFavorited = !this.isFavorited
     },
-    ...mapActions(['toggleFullscreenStatus'])
+    ...mapActions(['toggleFullscreenStatus', 'playQueueItem'])
   }
 }
 </script>
