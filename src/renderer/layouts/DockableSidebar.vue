@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Dialog :open="false" />
         <section class="handle" :class="{'open': menuStatus}">
             <div @click="toggleMenuStatus" class="icon">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
@@ -122,6 +123,7 @@
 <script>
 import MenuGroup from '../components/MenuGroup'
 import MenuItem from '../components/MenuItem'
+import Dialog from '../components/Dialog'
 import projectPackage from '~/package.json'
 import Logo from '../components/Logo'
 import { mapActions, mapGetters } from 'vuex'
@@ -131,7 +133,7 @@ import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll'
 Scrollbar.use(OverscrollPlugin)
 export default {
   name: 'DockableSidebar',
-  components: { MenuGroup, MenuItem, Logo, Button },
+  components: { MenuGroup, MenuItem, Logo, Button, Dialog },
   data: () => {
     return { version: projectPackage.version }
   },
