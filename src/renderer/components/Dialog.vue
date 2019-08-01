@@ -17,6 +17,14 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.dialog
+.dialog-wrapper.open
+    .overlay
+        position: absolute
+        left: 0
+        top: 0
+        width: 100vw
+        height: 100vh
+        background: rgba(black,0.1)
+        z-index: 1400
     display: block
 </style>
