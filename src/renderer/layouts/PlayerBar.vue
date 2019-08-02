@@ -99,7 +99,6 @@ export default {
       this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
       let readyCounter = 0
       this.wavesurfer.on('ready', () => {
-        console.log('ready')
         readyCounter += 1
         this.duration = formatSeconds(this.getDuration())
         let map = this.wavesurfer.minimap.drawer.container
@@ -108,6 +107,14 @@ export default {
         if (readyCounter > 2) {
           this.play()
           this.playingStatus = this.isPlaying()
+        }
+      })
+      this.wavesurfer.on('finish', () => {
+        if (this.currentlyPlaying >= 0 && (this.currentlyPlaying + 1) !== this.playerQueue.length) {
+          this.playNext()
+        }
+        if (this.currentlyPlaying >= 0 && (this.currentlyPlaying + 1) === this.playerQueue.length) {
+          this.playingStatus = false
         }
       })
       let currentWidth = 0
