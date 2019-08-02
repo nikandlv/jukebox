@@ -105,7 +105,7 @@ export default {
         let map = this.wavesurfer.minimap.drawer.container
         this.wavesurfer.container.style['height'] = '100%'
         map.style['height'] = '100%'
-        if (readyCounter > 0) {
+        if (readyCounter > 2) {
           this.play()
         }
       })
