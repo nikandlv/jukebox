@@ -294,7 +294,7 @@ section.fullscreen
   background-color: white
   z-index: 1400
   transition: transform 500ms ease-out
-  transform: translate3d(0,+100vh,0)
+  transform: translate3d(0,+100%,0)
   &.active
-    transform: translate3d(0,0vh,0)
+    transform: translate3d(0,0%,0)
 </style>
