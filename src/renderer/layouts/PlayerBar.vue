@@ -107,6 +107,7 @@ export default {
         map.style['height'] = '100%'
         if (readyCounter > 2) {
           this.play()
+          this.playingStatus = this.isPlaying()
         }
       })
       let currentWidth = 0
