@@ -171,10 +171,20 @@ export default {
       })
     },
     playNext () {
-      this.playQueueItem(this.currentlyPlaying + 1)
+      this.wavesurfer.container.style['height'] = '0%'
+      let map = this.wavesurfer.minimap.drawer.container
+      map.style['height'] = '0%'
+      window.setTimeout(() => {
+        this.playQueueItem(this.currentlyPlaying + 1)
+      }, 500)
     },
     playPrevious () {
-      this.playQueueItem(this.currentlyPlaying - 1)
+      this.wavesurfer.container.style['height'] = '0%'
+      let map = this.wavesurfer.minimap.drawer.container
+      map.style['height'] = '0%'
+      window.setTimeout(() => {
+        this.playQueueItem(this.currentlyPlaying - 1)
+      }, 500)
     },
     play () {
       this.wavesurfer.play()
@@ -250,7 +260,7 @@ section.player
           top: 0
           bottom: 0
           margin: auto
-          transition: height 500ms ease ease
+          transition: height 500ms ease
           height: 0px
           width: 100%
           z-index: 
