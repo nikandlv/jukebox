@@ -49,7 +49,6 @@ import color from 'dominant-color'
 import { formatSeconds } from '../utility/DateTime'
 import IconButton from '../components/IconButton'
 import { mapActions, mapGetters } from 'vuex'
-
 export default {
   name: 'PlayerBar',
   components: { IconButton },
@@ -64,6 +63,9 @@ export default {
   computed: mapGetters(['fullscreenStatus', 'currentlyPlaying', 'playerQueue']),
   mounted () {
     this.drawVisualizer()
+  },
+  updated () {
+    this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
   },
   methods: {
     drawVisualizer () {
@@ -95,11 +97,17 @@ export default {
         ]
       })
       this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+      let readyCounter = 0
       this.wavesurfer.on('ready', () => {
+        console.log('ready')
+        readyCounter += 1
         this.duration = formatSeconds(this.getDuration())
-        this.wavesurfer.container.style['height'] = '100%'
         let map = this.wavesurfer.minimap.drawer.container
+        this.wavesurfer.container.style['height'] = '100%'
         map.style['height'] = '100%'
+        if (readyCounter > 0) {
+          this.play()
+        }
       })
       let currentWidth = 0
       let hoverStatus = false
@@ -168,21 +176,31 @@ export default {
       })
     },
     playNext () {
-      this.playQueueItem(this.currentlyPlaying + 1)
-      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+      this.wavesurfer.container.style['height'] = '0%'
+      let map = this.wavesurfer.minimap.drawer.container
+      map.style['height'] = '0%'
+      window.setTimeout(() => {
+        this.playQueueItem(this.currentlyPlaying + 1)
+      }, 500)
     },
     playPrevious () {
-      this.playQueueItem(this.currentlyPlaying - 1)
-      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+      this.wavesurfer.container.style['height'] = '0%'
+      let map = this.wavesurfer.minimap.drawer.container
+      map.style['height'] = '0%'
+      window.setTimeout(() => {
+        this.playQueueItem(this.currentlyPlaying - 1)
+      }, 500)
     },
     play () {
       this.wavesurfer.play()
     },
     pause () {
       this.wavesurfer.pause()
+      this.playingStatus = this.isPlaying()
     },
     stop () {
       this.wavesurfer.stop()
+      this.playingStatus = this.isPlaying()
     },
     toggleMute () {
       this.wavesurfer.toggleMute()
@@ -206,7 +224,11 @@ export default {
       return this.wavesurfer.getDuration()
     },
     togglePlay () {
-      this.wavesurfer.playPause()
+      if (this.isPlaying()) {
+        this.pause()
+      } else {
+        this.play()
+      }
       this.playingStatus = this.isPlaying()
     },
     toggleFavorite () {
@@ -249,7 +271,7 @@ section.player
           top: 0
           bottom: 0
           margin: auto
-          transition: height 500ms ease ease
+          transition: height 500ms ease
           height: 0px
           width: 100%
           z-index: 
@@ -272,7 +294,7 @@ section.fullscreen
   background-color: white
   z-index: 1400
   transition: transform 500ms ease-out
-  transform: translate3d(0,+100vh,0)
+  transform: translate3d(0,+100%,0)
   &.active
-    transform: translate3d(0,0vh,0)
+    transform: translate3d(0,0%,0)
 </style>
