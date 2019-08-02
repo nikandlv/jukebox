@@ -65,6 +65,9 @@ export default {
   mounted () {
     this.drawVisualizer()
   },
+  updated () {
+    this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+  },
   methods: {
     drawVisualizer () {
       let progress = this.$el.getElementsByClassName('progress')[0]
@@ -169,11 +172,9 @@ export default {
     },
     playNext () {
       this.playQueueItem(this.currentlyPlaying + 1)
-      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
     },
     playPrevious () {
       this.playQueueItem(this.currentlyPlaying - 1)
-      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
     },
     play () {
       this.wavesurfer.play()
