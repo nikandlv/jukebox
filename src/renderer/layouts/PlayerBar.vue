@@ -49,7 +49,6 @@ import color from 'dominant-color'
 import { formatSeconds } from '../utility/DateTime'
 import IconButton from '../components/IconButton'
 import { mapActions, mapGetters } from 'vuex'
-
 export default {
   name: 'PlayerBar',
   components: { IconButton },
@@ -98,11 +97,17 @@ export default {
         ]
       })
       this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+      let readyCounter = 0
       this.wavesurfer.on('ready', () => {
+        console.log('ready')
+        readyCounter += 1
         this.duration = formatSeconds(this.getDuration())
-        this.wavesurfer.container.style['height'] = '100%'
         let map = this.wavesurfer.minimap.drawer.container
+        this.wavesurfer.container.style['height'] = '100%'
         map.style['height'] = '100%'
+        if (readyCounter > 0) {
+          this.play()
+        }
       })
       let currentWidth = 0
       let hoverStatus = false
@@ -191,9 +196,11 @@ export default {
     },
     pause () {
       this.wavesurfer.pause()
+      this.playingStatus = this.isPlaying()
     },
     stop () {
       this.wavesurfer.stop()
+      this.playingStatus = this.isPlaying()
     },
     toggleMute () {
       this.wavesurfer.toggleMute()
@@ -217,7 +224,11 @@ export default {
       return this.wavesurfer.getDuration()
     },
     togglePlay () {
-      this.wavesurfer.playPause()
+      if (this.isPlaying()) {
+        this.pause()
+      } else {
+        this.play()
+      }
       this.playingStatus = this.isPlaying()
     },
     toggleFavorite () {
