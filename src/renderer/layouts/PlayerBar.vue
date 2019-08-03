@@ -34,7 +34,7 @@
               </IconButton>
           </div>
       </section>
-      <section class="fullscreen" :class="{'active' : fullscreenStatus}">
+      <section class="fullscreen theme-background" :class="{'active' : fullscreenStatus}">
               <IconButton variant="contained" :click="toggleFullscreenStatus">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
               </IconButton>
@@ -57,7 +57,8 @@ export default {
       playingStatus: false,
       isFavorited: false,
       duration: '00:00',
-      isFullscreen: false
+      isFullscreen: false,
+      updateCurrent: false
     }
   },
   computed: mapGetters(['fullscreenStatus', 'currentlyPlaying', 'playerQueue']),
@@ -65,7 +66,10 @@ export default {
     this.drawVisualizer()
   },
   updated () {
-    this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+    if (this.updateCurrent) {
+      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+      this.updateCurrent = false
+    }
   },
   methods: {
     drawVisualizer () {
@@ -155,6 +159,7 @@ export default {
     onArtworkLoad () {
       let img = this.$el.getElementsByTagName('img')[0]
       let controlIcons = this.$el.getElementsByClassName('control-buttons')[0].children
+      let themeBackground = this.$el.getElementsByClassName('theme-background')
       color(img.src, (_, color) => {
         this.wavesurfer.setProgressColor(`#${color}`)
         this.wavesurfer.minimap.params.progressColor = `#${color}`
@@ -181,6 +186,11 @@ export default {
             controlIcons[child].style.backgroundColor = `#${color}`
           }
         }
+        for (let item in themeBackground) {
+          if (typeof themeBackground[item] === 'object') {
+            themeBackground[item].style.backgroundColor = `#${color}`
+          }
+        }
       })
     },
     playNext () {
@@ -189,6 +199,7 @@ export default {
       map.style['height'] = '0%'
       window.setTimeout(() => {
         this.playQueueItem(this.currentlyPlaying + 1)
+        this.updateCurrent = true
       }, 500)
     },
     playPrevious () {
@@ -197,6 +208,7 @@ export default {
       map.style['height'] = '0%'
       window.setTimeout(() => {
         this.playQueueItem(this.currentlyPlaying - 1)
+        this.updateCurrent = true
       }, 500)
     },
     play () {
