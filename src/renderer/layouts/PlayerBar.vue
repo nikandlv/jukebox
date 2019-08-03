@@ -34,7 +34,7 @@
               </IconButton>
           </div>
       </section>
-      <section class="fullscreen" :class="{'active' : fullscreenStatus}">
+      <section class="fullscreen theme-background" :class="{'active' : fullscreenStatus}">
               <IconButton variant="contained" :click="toggleFullscreenStatus">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
               </IconButton>
@@ -155,6 +155,7 @@ export default {
     onArtworkLoad () {
       let img = this.$el.getElementsByTagName('img')[0]
       let controlIcons = this.$el.getElementsByClassName('control-buttons')[0].children
+      let themeBackground = this.$el.getElementsByClassName('theme-background')
       color(img.src, (_, color) => {
         this.wavesurfer.setProgressColor(`#${color}`)
         this.wavesurfer.minimap.params.progressColor = `#${color}`
@@ -179,6 +180,12 @@ export default {
               continue
             }
             controlIcons[child].style.backgroundColor = `#${color}`
+          }
+        }
+        for (let item in themeBackground) {
+          console.log(item)
+          if (typeof themeBackground[item] === 'object') {
+            themeBackground[item].style.backgroundColor = `#${color}`
           }
         }
       })
