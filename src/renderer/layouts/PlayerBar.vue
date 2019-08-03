@@ -57,7 +57,8 @@ export default {
       playingStatus: false,
       isFavorited: false,
       duration: '00:00',
-      isFullscreen: false
+      isFullscreen: false,
+      updateCurrent: false
     }
   },
   computed: mapGetters(['fullscreenStatus', 'currentlyPlaying', 'playerQueue']),
@@ -65,7 +66,10 @@ export default {
     this.drawVisualizer()
   },
   updated () {
-    this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+    if (this.updateCurrent) {
+      this.wavesurfer.load(this.playerQueue[this.currentlyPlaying].stream)
+      this.updateCurrent = false
+    }
   },
   methods: {
     drawVisualizer () {
@@ -196,6 +200,7 @@ export default {
       map.style['height'] = '0%'
       window.setTimeout(() => {
         this.playQueueItem(this.currentlyPlaying + 1)
+        this.updateCurrent = true
       }, 500)
     },
     playPrevious () {
@@ -204,6 +209,7 @@ export default {
       map.style['height'] = '0%'
       window.setTimeout(() => {
         this.playQueueItem(this.currentlyPlaying - 1)
+        this.updateCurrent = true
       }, 500)
     },
     play () {
