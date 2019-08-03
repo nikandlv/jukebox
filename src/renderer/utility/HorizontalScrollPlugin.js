@@ -5,7 +5,6 @@ export default class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
     transformDelta (delta, fromEvent) {
       const { x, y } = delta
       if (!this.scrollbar.options.horizontal) {
-        console.log('wtf', x)
         return {
           y: y,
           x: 0
