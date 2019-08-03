@@ -4,7 +4,7 @@
 
         </div>
         <div class="dialog">
-
+            <slot></slot>
         </div>
     </div>
 </template>
