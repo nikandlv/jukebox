@@ -187,7 +187,6 @@ export default {
           }
         }
         for (let item in themeBackground) {
-          console.log(item)
           if (typeof themeBackground[item] === 'object') {
             themeBackground[item].style.backgroundColor = `#${color}`
           }
