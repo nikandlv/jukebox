@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Dialog :open="false" />
+        <Dialog :open="aboutOpen" :onClose="closeAbout" />
         <section class="handle" :class="{'open': menuStatus}">
             <div @click="toggleMenuStatus" class="icon">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
@@ -107,7 +107,7 @@
                         </template>
                         Settings
                     </MenuItem>
-                    <MenuItem to="/" :faded="true">
+                    <MenuItem to="#" :click="openAbout" :faded="true">
                         <template v-slot:icon>
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                 <path d="M8,16a8,8,0,1,1,8-8A8.011,8.011,0,0,1,8,16Zm-.075-5.159a.924.924,0,0,0-.67.266.885.885,0,0,0-.274.657.862.862,0,0,0,.283.686.979.979,0,0,0,.661.245.947.947,0,0,0,.645-.248.869.869,0,0,0,.279-.682.91.91,0,0,0-.924-.923Zm.148-6.228a1.354,1.354,0,0,1,.952.341,1.1,1.1,0,0,1,.369.837.942.942,0,0,1-.121.472,1.8,1.8,0,0,1-.3.394c-.119.119-.312.3-.573.524a9.768,9.768,0,0,0-.72.686,2.251,2.251,0,0,0-.427.67,2.312,2.312,0,0,0-.162.9.832.832,0,0,0,.22.626.758.758,0,0,0,.543.211A.692.692,0,0,0,8.6,9.631c.045-.2.08-.343.1-.425a1.261,1.261,0,0,1,.1-.242A1.4,1.4,0,0,1,8.983,8.7a4.338,4.338,0,0,1,.338-.338c.518-.462.864-.779,1.058-.97a2.869,2.869,0,0,0,.509-.686A1.91,1.91,0,0,0,11.1,5.78a2.22,2.22,0,0,0-.375-1.24,2.579,2.579,0,0,0-1.064-.9A3.629,3.629,0,0,0,8.074,3.3a3.486,3.486,0,0,0-1.693.4,2.932,2.932,0,0,0-1.105,1A2.255,2.255,0,0,0,4.9,5.9a.753.753,0,0,0,.239.53.792.792,0,0,0,.587.245c.39,0,.66-.236.8-.7a2.756,2.756,0,0,1,.545-1.013A1.324,1.324,0,0,1,8.074,4.613Z"/>
@@ -135,14 +135,21 @@ export default {
   name: 'DockableSidebar',
   components: { MenuGroup, MenuItem, Logo, Button, Dialog },
   data: () => {
-    return { version: projectPackage.version }
+    return { version: projectPackage.version, aboutOpen: false }
   },
   mounted () {
     let container = this.$el.getElementsByClassName('sidebar')[0]
     Scrollbar.init(container, { overscrollEffect: 'bounce', continuousScrolling: true })
   },
   methods: {
-    ...mapActions(['toggleMenuStatus'])
+    ...mapActions(['toggleMenuStatus']),
+    openAbout () {
+      this.aboutOpen = true
+    },
+    closeAbout () {
+      console.log('close')
+      this.aboutOpen = false
+    }
   },
   computed: mapGetters(['menuStatus'])
 }

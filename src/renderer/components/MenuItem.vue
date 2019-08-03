@@ -1,18 +1,26 @@
 <template>
-    <router-link tag="li" :to="to" class="menu-item" :class="{'fade' : faded}">
-        <span>
+    <router-link tag="span" :to="to">
+        <li @click="onClick" class="menu-item" :class="{'fade' : faded}">
+            <span>
             <slot name="icon"></slot>
-        </span>
-        <span>
-            <slot>Nothing to show</slot>
-        </span>
+            </span>
+            <span>
+                <slot>Nothing to show</slot>
+            </span>
+        </li>
     </router-link>
 </template>
 
 <script>
 export default {
   name: 'MenuItem',
-  props: ['to', 'faded']
+  props: ['to', 'faded', 'click'],
+  computed: {
+    onClick () {
+      console.log(this.click)
+      return this.click || (() => {})
+    }
+  }
 }
 </script>
 
