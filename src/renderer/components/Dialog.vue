@@ -1,6 +1,6 @@
 <template>
-    <div class="dialog-wrapper" :class="{'open' : open}">
-        <div class="overlay">
+    <div class="dialog-wrapper" :class="{'open' : !open}">
+        <div class="overlay" @click="onCloseEvent">
 
         </div>
         <div class="dialog">
@@ -12,7 +12,12 @@
 <script>
 export default {
   name: 'Dialog',
-  props: ['open']
+  props: ['open'],
+  computed: {
+    onCloseEvent () {
+      return this.onClose || (() => {})
+    }
+  }
 }
 </script>
 
