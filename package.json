@@ -1,6 +1,6 @@
 {
   "name": "jukebox",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "author": "Nikan Dalvand <nikandalvand@gmail.com>",
   "description": "A Cross-platform soundcloud client",
   "license": null,

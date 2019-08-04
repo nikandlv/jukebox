@@ -8,6 +8,20 @@ const state = {
       artist: 'Rich Brian',
       artwork: '/static/demo/yellow.jpeg',
       stream: '/static/demo/music.mp3'
+    },
+    {
+      id: 8,
+      title: 'Yellow',
+      artist: 'Rich Brian',
+      artwork: '/static/demo/habiba.jpg',
+      stream: '/static/demo/music.mp3'
+    },
+    {
+      id: 8,
+      title: 'Ali sorena',
+      artist: 'Negar',
+      artwork: '/static/demo/negar.jpg',
+      stream: '/static/demo/negar.mp3'
     }
   ]
 }

@@ -1,5 +1,5 @@
 <template>
-  <span @click="onClick" role="button" class="icon-button" :class="className">
+  <span @click="onClick" role="button" class="icon-button" :class="{className, 'disabled': disabled}">
     <slot name="icon"></slot>
     <slot></slot>
   </span>
@@ -14,7 +14,7 @@ export default {
       onClick: this.click || (() => {})
     }
   },
-  props: ['variant', 'click']
+  props: ['variant', 'click', 'disabled']
 
 }
 </script>
@@ -35,6 +35,9 @@ export default {
   outline: unset
   color: grey
   transition: all .2s ease-in-out
+  &.disabled
+    background-color: rgba(0,0,0,.15) !important
+    pointer-events: none
   &.large
     width: 48px
     height: 48px
@@ -51,7 +54,7 @@ export default {
     width: 24px
     height: 24px
     transition: fill 200ms
-    fill: gray
+    fill: white
   &:hover
     background-color: rgba(0,0,0,0.05)
   &:focus,&:active
