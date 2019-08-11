@@ -269,7 +269,7 @@ section.page
   .action-bar
     padding: 1rem 2.5rem
   .upper-row
-    padding: 1rem 2.5rem
+    padding: 1rem 2rem
   .middle-row
     display: flex
 
@@ -277,7 +277,7 @@ section.page
     flex: 1 0 50% 
     max-width: 50%
     &.recommend
-      max-width: 30%
+      max-width: 40%
 
 .favourite
   background: white
