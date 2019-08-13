@@ -30,7 +30,7 @@
             </List>
           </div> <!-- favourite box-->
 
-          <div class="grow-half recommend" >
+          <div class="grow-half recommend">
             <MusicRow :items='items' title="Recommended for you" class="carousel-custom half" /> 
           </div> <!-- recommended box -->
         </div>
@@ -116,7 +116,133 @@ export default {
           title: 'Tilte',
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
-        }
+        },
+        {
+          id: 9,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 10,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 12,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 13,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 14,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 15,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 0,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 1,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 2,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 3,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 4,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 5,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 6,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 7,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 8,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 9,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 10,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 12,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 13,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 14,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 15,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
       ],
       favourites: [
         {
