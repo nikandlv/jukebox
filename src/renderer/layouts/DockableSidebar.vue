@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="test">
         <Dialog :open="aboutOpen" :onClose="closeAbout">
             test
             <Logo :nopadding="true"/>
@@ -159,6 +159,8 @@ export default {
 </script>
 
 <style lang="sass">
+div#test 
+    border: 1px solid rgba(0,0,0,.05)
 section.handle
     position: absolute
     left: 0

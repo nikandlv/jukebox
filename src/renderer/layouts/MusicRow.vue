@@ -1,22 +1,23 @@
 <template>
     <section class="music-row">
         <legend>{{title}}</legend>
-        <section class="items">
+        <Carousel>
           <MusicBox v-for="item in items" :key="item.id" :item="item" />
-        </section>
-    </section>
+        </Carousel>
+    </section>  
 </template>
 
 <script>
 import MusicBox from '../components/MusicBox'
 import Scrollbar from 'smooth-scrollbar'
 import HorizontalScrollPlugin from '../utility/HorizontalScrollPlugin'
+import Carousel from '../components/Carousel'
 Scrollbar.use(HorizontalScrollPlugin)
 
 export default {
   name: 'MusicRow',
   props: ['items', 'title'],
-  components: { MusicBox },
+  components: { MusicBox, Carousel },
   mounted () {
     let container = this.$el.getElementsByClassName('items')[0]
     Scrollbar.init(container, { overscrollEffect: 'bounce', continuousScrolling: true, horizontal: true })
@@ -38,4 +39,5 @@ section.music-row
         display: flex
     .scrollbar-thumb,.scrollbar-track
       display: none !important
+    
 </style>
