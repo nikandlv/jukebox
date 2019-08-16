@@ -154,91 +154,91 @@ export default {
           artwork: '/static/demo/clever.jpg'
         },
         {
-          id: 0,
+          id: 16,
           title: 'Habiba',
           artist: 'Oldasinus',
           artwork: '/static/demo/habiba.jpg'
         },
         {
-          id: 1,
+          id: 17,
           title: 'Starboy',
           artist: 'The Weeknd',
           artwork: '/static/demo/starboy.png'
         },
         {
-          id: 2,
+          id: 18,
           title: 'Tilte',
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
         },
         {
-          id: 3,
+          id: 19,
           title: 'Habiba',
           artist: 'Oldasinus',
           artwork: '/static/demo/habiba.jpg'
         },
         {
-          id: 4,
+          id: 20,
           title: 'Starboy',
           artist: 'The Weeknd',
           artwork: '/static/demo/starboy.png'
         },
         {
-          id: 5,
+          id: 21,
           title: 'Tilte',
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
         },
         {
-          id: 6,
+          id: 22,
           title: 'Habiba',
           artist: 'Oldasinus',
           artwork: '/static/demo/habiba.jpg'
         },
         {
-          id: 7,
+          id: 23,
           title: 'Starboy',
           artist: 'The Weeknd',
           artwork: '/static/demo/starboy.png'
         },
         {
-          id: 8,
+          id: 24,
           title: 'Tilte',
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
         },
         {
-          id: 9,
+          id: 25,
           title: 'Habiba',
           artist: 'Oldasinus',
           artwork: '/static/demo/habiba.jpg'
         },
         {
-          id: 10,
+          id: 26,
           title: 'Starboy',
           artist: 'The Weeknd',
           artwork: '/static/demo/starboy.png'
         },
         {
-          id: 12,
+          id: 27,
           title: 'Tilte',
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
         },
         {
-          id: 13,
+          id: 28,
           title: 'Habiba',
           artist: 'Oldasinus',
           artwork: '/static/demo/habiba.jpg'
         },
         {
-          id: 14,
+          id: 29,
           title: 'Starboy',
           artist: 'The Weeknd',
           artwork: '/static/demo/starboy.png'
         },
         {
-          id: 15,
+          id: 30,
           title: 'Tilte',
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
@@ -259,13 +259,6 @@ export default {
           duration: '4:30',
           artwork: '/static/demo/starboy.png'
         }
-        // {
-        //   id: 3,
-        //   title: 'Tilte',
-        //   artist: 'Juice WRLD',
-        //   duration: '5:30',
-        //   artwork: '/static/demo/clever.jpg'
-        // }
       ],
 
       recommends: [
@@ -375,6 +368,114 @@ export default {
         },
         {
           id: 8,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 9,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 10,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 11,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 12,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 13,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 14,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 15,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 16,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 17,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 18,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 19,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 20,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 21,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 22,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 23,
+          title: 'Tilte',
+          artist: 'Juice WRLD',
+          artwork: '/static/demo/clever.jpg'
+        },
+        {
+          id: 24,
+          title: 'Habiba',
+          artist: 'Oldasinus',
+          artwork: '/static/demo/habiba.jpg'
+        },
+        {
+          id: 25,
+          title: 'Starboy',
+          artist: 'The Weeknd',
+          artwork: '/static/demo/starboy.png'
+        },
+        {
+          id: 26,
           title: 'Tilte',
           artist: 'Juice WRLD',
           artwork: '/static/demo/clever.jpg'
