@@ -150,7 +150,6 @@ export default {
       this.aboutOpen = true
     },
     closeAbout () {
-      console.log('close')
       this.aboutOpen = false
     }
   },

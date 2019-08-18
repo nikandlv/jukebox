@@ -17,7 +17,6 @@ export default {
   props: ['to', 'faded', 'click'],
   computed: {
     onClick () {
-      console.log(this.click)
       return this.click || (() => {})
     }
   }
