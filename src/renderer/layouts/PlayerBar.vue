@@ -313,8 +313,12 @@ section.fullscreen
   top: 0
   background-color: white
   z-index: 1400
-  transition: transform 500ms ease-out
-  transform: translate3d(0,+100%,0)
+  transition: opacity 500ms ease
+  //transform: translate3d(0,+100%,0)
+  opacity: 0
+  pointer-events: none
   &.active
-    transform: translate3d(0,0%,0)
+    opacity: 1
+    pointer-events: all
+    //transform: translate3d(0,0%,0)
 </style>
