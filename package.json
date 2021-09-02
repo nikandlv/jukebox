@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "abortcontroller-polyfill": "^1.3.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "dominant-color": "0.0.1",
     "normalize-scss": "^7.0.1",
     "roboto-slab-fontface-kit": "^1.0.2",
